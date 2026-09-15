@@ -1,0 +1,57 @@
+name: 카페24 과거 데이터 백필 (수동 1회용)
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: "소급 시작일 (YYYY-MM-DD)"
+        required: false
+        default: "2026-01-01"
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 과거 주문 데이터 백필
+        id: backfill
+        continue-on-error: true
+        env:
+          CAFE24_CLIENT_ID: ${{ secrets.CAFE24_CLIENT_ID }}
+          CAFE24_CLIENT_SECRET: ${{ secrets.CAFE24_CLIENT_SECRET }}
+          CAFE24_REFRESH_TOKEN: ${{ secrets.CAFE24_REFRESH_TOKEN }}
+          CAFE24_MALL_ID: ${{ secrets.CAFE24_MALL_ID }}
+          BACKFILL_START_DATE: ${{ inputs.start_date }}
+        run: python scripts/backfill_cafe24.py
+
+      - name: 변경사항 커밋 및 푸시
+        if: always() && steps.backfill.outputs.new_refresh_token != ''
+        run: |
+          git config user.name "cafe24-sync-bot"
+          git config user.email "actions@github.com"
+          git add data/cafe24-orders.json
+          git diff --quiet --cached || git commit -m "카페24 과거 데이터 백필 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
+
+      - name: 새 refresh_token을 저장소 Secret에 반영
+        if: always() && steps.backfill.outputs.new_refresh_token != ''
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          gh secret set CAFE24_REFRESH_TOKEN \
+            --repo ${{ github.repository }} \
+            --body "${{ steps.backfill.outputs.new_refresh_token }}"
+
+      - name: 백필 단계가 실패했다면 여기서 잡 실패 처리
+        if: steps.backfill.outcome == 'failure'
+        run: exit 1
