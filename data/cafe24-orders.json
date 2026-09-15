@@ -25627,5 +25627,121 @@
       "sales_amount": 436300.0
     }
   },
-  "last_synced_at": "2026-09-15T04:02:38.934572Z"
+  "last_synced_at": "2026-09-15T04:52:49.589818Z",
+  "channel_breakdown": {
+    "네이버 페이": {
+      "channel": "네이버 페이",
+      "order_count": 59,
+      "sales_amount": 1577400.0
+    },
+    "모바일웹": {
+      "channel": "모바일웹",
+      "order_count": 13,
+      "sales_amount": 234600.0
+    },
+    "톡체크아웃": {
+      "channel": "톡체크아웃",
+      "order_count": 12,
+      "sales_amount": 317800.0
+    }
+  },
+  "product_breakdown": {
+    "2026-09": {
+      "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러": {
+        "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
+        "quantity": 42,
+        "sales_amount": 867800.0,
+        "order_count": 42
+      },
+      "프라데라 700ml 손잡이형 Carry 텀블러 부속품": {
+        "product_name": "프라데라 700ml 손잡이형 Carry 텀블러 부속품",
+        "quantity": 5,
+        "sales_amount": 7500.0,
+        "order_count": 3
+      },
+      "프라데라 700ml 손잡이형 Carry 텀블러": {
+        "product_name": "프라데라 700ml 손잡이형 Carry 텀블러",
+        "quantity": 28,
+        "sales_amount": 605200.0,
+        "order_count": 28
+      },
+      "프라데라 대용량 40온즈 텀블러 부속품": {
+        "product_name": "프라데라 대용량 40온즈 텀블러 부속품",
+        "quantity": 12,
+        "sales_amount": 18000.0,
+        "order_count": 9
+      },
+      "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러, 미드나잇라떼": {
+        "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러, 미드나잇라떼",
+        "quantity": 3,
+        "sales_amount": 59700.0,
+        "order_count": 3
+      },
+      "프라데라 550ml 스트로우 스포츠형 AirSip 텀블러": {
+        "product_name": "프라데라 550ml 스트로우 스포츠형 AirSip 텀블러",
+        "quantity": 3,
+        "sales_amount": 56700.0,
+        "order_count": 3
+      },
+      "프라데라  550ml 스포츠 텀블러 부속품": {
+        "product_name": "프라데라  550ml 스포츠 텀블러 부속품",
+        "quantity": 2,
+        "sales_amount": 3000.0,
+        "order_count": 1
+      },
+      "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러, 바닐라푸딩": {
+        "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러, 바닐라푸딩",
+        "quantity": 1,
+        "sales_amount": 19900.0,
+        "order_count": 1
+      }
+    }
+  },
+  "refund_stats": {
+    "by_date": {
+      "2026-09-15": {
+        "date": "2026-09-15",
+        "order_count": 3,
+        "canceled_count": 0
+      },
+      "2026-09-14": {
+        "date": "2026-09-14",
+        "order_count": 11,
+        "canceled_count": 0
+      },
+      "2026-09-13": {
+        "date": "2026-09-13",
+        "order_count": 11,
+        "canceled_count": 1
+      },
+      "2026-09-12": {
+        "date": "2026-09-12",
+        "order_count": 9,
+        "canceled_count": 2
+      },
+      "2026-09-11": {
+        "date": "2026-09-11",
+        "order_count": 7,
+        "canceled_count": 0
+      },
+      "2026-09-10": {
+        "date": "2026-09-10",
+        "order_count": 9,
+        "canceled_count": 0
+      },
+      "2026-09-09": {
+        "date": "2026-09-09",
+        "order_count": 20,
+        "canceled_count": 1
+      },
+      "2026-09-08": {
+        "date": "2026-09-08",
+        "order_count": 19,
+        "canceled_count": 1
+      }
+    },
+    "total_orders": 89,
+    "total_canceled": 5,
+    "cancel_rate": 0.056179775280898875
+  }
 }
