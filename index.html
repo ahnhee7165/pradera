@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>쇼핑몰 매출 대시보드</title>
+<style>
+  :root {
+    --bg: #F6F7F5;
+    --surface: #FFFFFF;
+    --ink: #17211D;
+    --muted: #6B7568;
+    --line: #E2E6E1;
+    --brand: #22493E;
+    --brand-soft: #E7EFEA;
+    --accent: #E0972E;
+    --accent-soft: #FBEBD4;
+    --danger: #C1543D;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard Variable", "Pretendard",
+      "Malgun Gothic", "맑은 고딕", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ---------- 사이드바 ---------- */
+  .sidebar {
+    background: var(--brand);
+    color: #EAF1EC;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .brand {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+  }
+
+  .brand small {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    color: #AFC4B8;
+    margin-top: 4px;
+  }
+
+  .nav-group-title {
+    font-size: 11px;
+    color: #93AB9C;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .channel-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .channel-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 10px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    cursor: pointer;
+    color: #D8E5DD;
+  }
+
+  .channel-item.active {
+    background: rgba(255,255,255,0.12);
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  .channel-item.disabled {
+    color: #6C8478;
+    cursor: default;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .channel-item.disabled .dot { background: #4E6459; }
+
+  .badge-soon {
+    font-size: 10px;
+    background: rgba(255,255,255,0.08);
+    color: #A9BEB0;
+    padding: 2px 6px;
+    border-radius: 999px;
+  }
+
+  .period-select {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .period-select select {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #EAF1EC;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+  }
+
+  .sync-note {
+    margin-top: auto;
+    font-size: 11.5px;
+    color: #8FA79A;
+    line-height: 1.6;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 16px;
+  }
+
+  /* ---------- 메인 ---------- */
+  .main {
+    padding: 32px 40px 60px;
+    max-width: 1120px;
+  }
+
+  .page-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+
+  .page-sub {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 18px 16px;
+  }
+
+  .kpi-label {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .kpi-value {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .kpi-delta {
+    font-size: 12px;
+    margin-top: 6px;
+    color: var(--muted);
+  }
+
+  .kpi-delta.up { color: var(--brand); }
+  .kpi-delta.down { color: var(--danger); }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px 22px 18px;
+    margin-bottom: 20px;
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .panel-title {
+    font-size: 14.5px;
+    font-weight: 700;
+  }
+
+  .panel-note {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* 차트 */
+  #chart-wrap { width: 100%; overflow-x: auto; }
+  #sales-chart { display: block; }
+
+  .chart-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .legend-swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: -1px;
+  }
+
+  /* 테이블 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 12px;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  tbody td {
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--line);
+    font-variant-numeric: tabular-nums;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  .cell-amount { text-align: right; font-weight: 600; }
+  .cell-count { text-align: right; color: var(--muted); }
+
+  .channel-pill {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: #8A5A18;
+  }
+
+  .empty-state {
+    padding: 40px 10px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .status-line {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 18px;
+  }
+
+  @media (max-width: 860px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { flex-direction: row; flex-wrap: wrap; padding: 16px 20px; }
+    .main { padding: 24px 20px 40px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      쇼핑몰 매출 대시보드
+      <small>praderatumbler</small>
+    </div>
+
+    <div>
+      <div class="nav-group-title">채널</div>
+      <ul class="channel-list">
+        <li class="channel-item active" data-channel="all">
+          <span><span class="dot"></span> 전체</span>
+        </li>
+        <li class="channel-item" data-channel="cafe24">
+          <span><span class="dot"></span> 카페24</span>
+        </li>
+        <li class="channel-item disabled" data-channel="naver">
+          <span><span class="dot"></span> 스마트스토어</span>
+          <span class="badge-soon">연동 예정</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="period-select">
+      <div class="nav-group-title">기간</div>
+      <select id="period-level">
+        <option value="daily" selected>일별</option>
+        <option value="weekly">주차별</option>
+        <option value="monthly">월별</option>
+      </select>
+    </div>
+
+    <div class="sync-note" id="sync-note">
+      데이터 불러오는 중…
+    </div>
+  </aside>
+
+  <main class="main">
+    <h1 class="page-title">매출 요약</h1>
+    <p class="page-sub" id="range-label">최근 7일</p>
+
+    <section class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">총 매출</div>
+        <div class="kpi-value" id="kpi-sales">–</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">주문 건수</div>
+        <div class="kpi-value" id="kpi-orders">–</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">객단가</div>
+        <div class="kpi-value" id="kpi-aov">–</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">연동 채널</div>
+        <div class="kpi-value" id="kpi-channels">1 / 2</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">기간별 매출 추이</div>
+        <div class="panel-note" id="chart-note">일별</div>
+      </div>
+      <div id="chart-wrap">
+        <canvas id="sales-chart" height="220"></canvas>
+      </div>
+      <div class="chart-legend">
+        <span><span class="legend-swatch" style="background:#22493E"></span>카페24</span>
+        <span><span class="legend-swatch" style="background:#E0972E"></span>스마트스토어 (연동 예정)</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">일자별 상세</div>
+        <div class="panel-note">최신순</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th>채널</th>
+            <th style="text-align:right;">주문건수</th>
+            <th style="text-align:right;">매출</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr><td colspan="4" class="empty-state">불러오는 중…</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="status-line" id="status-line"></p>
+  </main>
+
+</div>
+
+<script>
+(function () {
+  const CAFE24_URL = "./data/cafe24-orders.json";
+  const NAVER_URL = "./data/naver-orders.json"; // 아직 없음. 나중에 스마트스토어 연동 붙이면 이 경로에 저장
+
+  const fmtWon = (n) => "₩" + Math.round(n).toLocaleString("ko-KR");
+  const fmtInt = (n) => n.toLocaleString("ko-KR");
+
+  function getWeekKey(dateStr) {
+    const d = new Date(dateStr + "T00:00:00");
+    const day = d.getDay(); // 0=일
+    const diffToFriday = (day + 2) % 7; // 금요일 시작 주차 기준 (기존 대시보드 규칙과 동일)
+    const start = new Date(d);
+    start.setDate(d.getDate() - diffToFriday);
+    return start.toISOString().slice(0, 10);
+  }
+
+  function getMonthKey(dateStr) {
+    return dateStr.slice(0, 7); // YYYY-MM
+  }
+
+  async function fetchJSON(url) {
+    try {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function aggregate(salesByDate, level) {
+    const keyFn = level === "monthly" ? getMonthKey : level === "weekly" ? getWeekKey : (d) => d;
+    const out = {};
+    Object.values(salesByDate).forEach((row) => {
+      const key = keyFn(row.date);
+      if (!out[key]) out[key] = { key, order_count: 0, sales_amount: 0 };
+      out[key].order_count += row.order_count;
+      out[key].sales_amount += row.sales_amount;
+    });
+    return Object.values(out).sort((a, b) => (a.key < b.key ? 1 : -1)); // 최신순
+  }
+
+  function drawChart(rows) {
+    const canvas = document.getElementById("sales-chart");
+    const wrap = document.getElementById("chart-wrap");
+    const width = Math.max(wrap.clientWidth, rows.length * 46);
+    const height = 220;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    const ctx = canvas.getContext("2d");
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, width, height);
+
+    const ordered = [...rows].reverse(); // 과거 -> 최근
+    if (ordered.length === 0) return;
+
+    const max = Math.max(...ordered.map((r) => r.sales_amount), 1);
+    const padL = 8, padR = 8, padT = 14, padB = 26;
+    const chartW = width - padL - padR;
+    const chartH = height - padT - padB;
+    const barW = Math.min(28, (chartW / ordered.length) * 0.55);
+    const step = chartW / ordered.length;
+
+    ctx.strokeStyle = "#E2E6E1";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padL, padT + chartH);
+    ctx.lineTo(padL + chartW, padT + chartH);
+    ctx.stroke();
+
+    ordered.forEach((r, i) => {
+      const x = padL + step * i + (step - barW) / 2;
+      const h = max > 0 ? (r.sales_amount / max) * chartH : 0;
+      const y = padT + chartH - h;
+      ctx.fillStyle = "#22493E";
+      ctx.fillRect(x, y, barW, h);
+
+      ctx.fillStyle = "#6B7568";
+      ctx.font = "11px -apple-system, sans-serif";
+      ctx.textAlign = "center";
+      const label = r.key.length === 10 ? r.key.slice(5) : r.key.length === 7 ? r.key.slice(5) : r.key.slice(5);
+      ctx.fillText(label, x + barW / 2, padT + chartH + 16);
+    });
+  }
+
+  function renderTable(rows) {
+    const tbody = document.getElementById("table-body");
+    if (rows.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" class="empty-state">표시할 데이터가 없습니다.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows
+      .slice(0, 30)
+      .map(
+        (r) => `
+        <tr>
+          <td>${r.key}</td>
+          <td><span class="channel-pill">카페24</span></td>
+          <td class="cell-count">${fmtInt(r.order_count)}건</td>
+          <td class="cell-amount">${fmtWon(r.sales_amount)}</td>
+        </tr>`
+      )
+      .join("");
+  }
+
+  function renderKPI(rows, hasNaver) {
+    const totalSales = rows.reduce((sum, r) => sum + r.sales_amount, 0);
+    const totalOrders = rows.reduce((sum, r) => sum + r.order_count, 0);
+    const aov = totalOrders > 0 ? totalSales / totalOrders : 0;
+
+    document.getElementById("kpi-sales").textContent = fmtWon(totalSales);
+    document.getElementById("kpi-orders").textContent = fmtInt(totalOrders) + "건";
+    document.getElementById("kpi-aov").textContent = fmtWon(aov);
+    document.getElementById("kpi-channels").textContent = hasNaver ? "2 / 2" : "1 / 2";
+  }
+
+  async function init() {
+    const [cafe24Data, naverData] = await Promise.all([
+      fetchJSON(CAFE24_URL),
+      fetchJSON(NAVER_URL),
+    ]);
+
+    const syncNote = document.getElementById("sync-note");
+    const statusLine = document.getElementById("status-line");
+
+    if (!cafe24Data) {
+      syncNote.textContent = "카페24 데이터를 아직 불러오지 못했습니다. data/cafe24-orders.json을 확인해 주세요.";
+      renderTable([]);
+      return;
+    }
+
+    const salesByDate = cafe24Data.salesreport || {};
+    syncNote.textContent = cafe24Data.last_synced_at
+      ? "마지막 동기화: " + cafe24Data.last_synced_at.replace("T", " ").replace("Z", "")
+      : "동기화 기록 없음";
+    statusLine.textContent = "네이버 스마트스토어 데이터가 연동되면 이 화면에 자동으로 함께 표시됩니다.";
+
+    const levelSelect = document.getElementById("period-level");
+    const chartNote = document.getElementById("chart-note");
+    const rangeLabel = document.getElementById("range-label");
+
+    function render() {
+      const level = levelSelect.value;
+      const rows = aggregate(salesByDate, level);
+      renderKPI(rows, !!naverData);
+      drawChart(rows.slice(0, 30));
+      renderTable(rows);
+      chartNote.textContent = level === "monthly" ? "월별" : level === "weekly" ? "주차별" : "일별";
+      rangeLabel.textContent =
+        level === "monthly" ? "월별 집계" : level === "weekly" ? "주차별 집계 (금요일 시작)" : "최근 데이터 기준 일별 집계";
+    }
+
+    levelSelect.addEventListener("change", render);
+    window.addEventListener("resize", () => drawChart(aggregate(salesByDate, levelSelect.value).slice(0, 30)));
+
+    render();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
