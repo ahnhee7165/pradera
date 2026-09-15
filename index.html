@@ -119,23 +119,6 @@
     border-radius: 999px;
   }
 
-  .period-select {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .period-select select {
-    width: 100%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: #EAF1EC;
-    padding: 8px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-family: inherit;
-  }
-
   .sync-note {
     margin-top: auto;
     font-size: 11.5px;
@@ -197,9 +180,6 @@
     color: var(--muted);
   }
 
-  .kpi-delta.up { color: var(--brand); }
-  .kpi-delta.down { color: var(--danger); }
-
   .panel {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -213,6 +193,15 @@
     align-items: baseline;
     justify-content: space-between;
     margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .panel-title-wrap { display: flex; align-items: baseline; gap: 8px; }
+
+  .panel-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
   }
 
   .panel-title {
@@ -225,25 +214,32 @@
     color: var(--muted);
   }
 
-  /* 차트 */
-  #chart-wrap { width: 100%; overflow-x: auto; }
-  #sales-chart { display: block; }
-
-  .chart-legend {
-    display: flex;
-    gap: 16px;
-    margin-top: 10px;
-    font-size: 12px;
-    color: var(--muted);
+  .panel-select {
+    font-size: 12.5px;
+    padding: 5px 8px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: inherit;
   }
 
-  .legend-swatch {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-    margin-right: 6px;
-    vertical-align: -1px;
+  /* 차트 */
+  .chart-wrap { width: 100%; overflow-x: auto; position: relative; }
+  .chart-wrap canvas { display: block; }
+
+  .chart-tooltip {
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    background: #17211D;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   }
 
   /* 테이블 */
@@ -272,15 +268,6 @@
 
   .cell-amount { text-align: right; font-weight: 600; }
   .cell-count { text-align: right; color: var(--muted); }
-
-  .channel-pill {
-    display: inline-block;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: #8A5A18;
-  }
 
   .empty-state {
     padding: 40px 10px;
@@ -328,15 +315,6 @@
       </ul>
     </div>
 
-    <div class="period-select">
-      <div class="nav-group-title">기간</div>
-      <select id="period-level">
-        <option value="daily" selected>일별</option>
-        <option value="weekly">주차별</option>
-        <option value="monthly">월별</option>
-      </select>
-    </div>
-
     <div class="sync-note" id="sync-note">
       데이터 불러오는 중…
     </div>
@@ -344,7 +322,7 @@
 
   <main class="main">
     <h1 class="page-title">매출 요약</h1>
-    <p class="page-sub" id="range-label">최근 7일</p>
+    <p class="page-sub" id="range-label">누적 전체 기간</p>
 
     <section class="kpi-row">
       <div class="kpi-card">
@@ -366,9 +344,13 @@
       </div>
     </section>
 
+    <!-- 01. 전체 채널 유입별 매출 -->
     <section class="panel">
       <div class="panel-head">
-        <div class="panel-title">유입 채널별 매출</div>
+        <div class="panel-title-wrap">
+          <span class="panel-num">01</span>
+          <span class="panel-title">전체 채널 유입별 매출</span>
+        </div>
         <div class="panel-note">누적 전체 기간 · 카페24 결제경로 기준</div>
       </div>
       <table>
@@ -386,10 +368,14 @@
       </table>
     </section>
 
+    <!-- 02. 판매 상품 순위 -->
     <section class="panel">
       <div class="panel-head">
-        <div class="panel-title">월별 판매 상품 순위</div>
-        <select id="product-month-select" style="font-size:12.5px; padding:5px 8px; border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--ink);"></select>
+        <div class="panel-title-wrap">
+          <span class="panel-num">02</span>
+          <span class="panel-title">판매 상품 순위</span>
+        </div>
+        <select id="product-month-select" class="panel-select"></select>
       </div>
       <table>
         <thead>
@@ -406,36 +392,83 @@
       </table>
     </section>
 
-
+    <!-- 03. 월 주차별 매출 추이 -->
     <section class="panel">
       <div class="panel-head">
-        <div class="panel-title">기간별 매출 추이</div>
-        <div class="panel-note" id="chart-note">일별</div>
+        <div class="panel-title-wrap">
+          <span class="panel-num">03</span>
+          <span class="panel-title">주차별 매출 추이</span>
+        </div>
+        <select id="weekly-month-select" class="panel-select"></select>
       </div>
-      <div id="chart-wrap">
-        <canvas id="sales-chart" height="220"></canvas>
+      <div class="chart-wrap" id="weekly-chart-wrap">
+        <canvas id="weekly-chart" height="200"></canvas>
+        <div class="chart-tooltip" id="weekly-tooltip"></div>
       </div>
-      <div class="chart-legend">
-        <span><span class="legend-swatch" style="background:#22493E"></span>카페24</span>
-        <span><span class="legend-swatch" style="background:#E0972E"></span>스마트스토어 (연동 예정)</span>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel-head">
-        <div class="panel-title">일자별 상세</div>
-        <div class="panel-note">최신순</div>
-      </div>
-      <table>
+      <table style="margin-top:16px;">
         <thead>
           <tr>
-            <th>날짜</th>
-            <th>채널</th>
+            <th>주차</th>
             <th style="text-align:right;">주문건수</th>
             <th style="text-align:right;">매출</th>
           </tr>
         </thead>
-        <tbody id="table-body">
+        <tbody id="weekly-table-body">
+          <tr><td colspan="3" class="empty-state">불러오는 중…</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 04. 월 일자별 매출 추이 -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title-wrap">
+          <span class="panel-num">04</span>
+          <span class="panel-title">일자별 매출 추이</span>
+        </div>
+        <select id="daily-month-select" class="panel-select"></select>
+      </div>
+      <div class="chart-wrap" id="daily-chart-wrap">
+        <canvas id="daily-chart" height="200"></canvas>
+        <div class="chart-tooltip" id="daily-tooltip"></div>
+      </div>
+      <table style="margin-top:16px;">
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th style="text-align:right;">주문건수</th>
+            <th style="text-align:right;">매출</th>
+          </tr>
+        </thead>
+        <tbody id="daily-table-body">
+          <tr><td colspan="3" class="empty-state">불러오는 중…</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 05. 요일별 데이터 -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title-wrap">
+          <span class="panel-num">05</span>
+          <span class="panel-title">요일별 매출 데이터</span>
+        </div>
+        <div class="panel-note">누적 전체 기간 기준</div>
+      </div>
+      <div class="chart-wrap" id="weekday-chart-wrap">
+        <canvas id="weekday-chart" height="200"></canvas>
+        <div class="chart-tooltip" id="weekday-tooltip"></div>
+      </div>
+      <table style="margin-top:16px;">
+        <thead>
+          <tr>
+            <th>요일</th>
+            <th style="text-align:right;">누적 주문건수</th>
+            <th style="text-align:right;">누적 매출</th>
+            <th style="text-align:right;">일평균 매출</th>
+          </tr>
+        </thead>
+        <tbody id="weekday-table-body">
           <tr><td colspan="4" class="empty-state">불러오는 중…</td></tr>
         </tbody>
       </table>
@@ -454,34 +487,6 @@
   const fmtWon = (n) => "₩" + Math.round(n).toLocaleString("ko-KR");
   const fmtInt = (n) => n.toLocaleString("ko-KR");
 
-  function getWeekKey(dateStr) {
-    // 월요일 시작 ~ 일요일 종료 기준. key는 그 주의 월요일 날짜(YYYY-MM-DD).
-    const d = new Date(dateStr + "T00:00:00");
-    const day = d.getDay(); // 0=일, 1=월 ...
-    const diffToMonday = (day + 6) % 7; // 월요일까지 며칠 전인지
-    const start = new Date(d);
-    start.setDate(d.getDate() - diffToMonday);
-    return start.toISOString().slice(0, 10);
-  }
-
-  function getMonthKey(dateStr) {
-    return dateStr.slice(0, 7); // YYYY-MM
-  }
-
-  // 주차 key(그 주의 월요일 날짜)를 "9월 2주차" 같은 표시용 라벨로 변환.
-  // 월 안에서 몇 번째 월요일인지로 주차를 매긴다 (1~7일: 1주차, 8~14일: 2주차 ...).
-  function weekLabel(mondayIso) {
-    const d = new Date(mondayIso + "T00:00:00");
-    const month = d.getMonth() + 1;
-    const weekIndex = Math.ceil(d.getDate() / 7);
-    return `${month}월 ${weekIndex}주차`;
-  }
-
-  function formatKeyLabel(key, level) {
-    if (level === "weekly") return weekLabel(key);
-    return key; // 월별(YYYY-MM), 일별(YYYY-MM-DD)은 그대로 표기
-  }
-
   async function fetchJSON(url) {
     try {
       const res = await fetch(url, { cache: "no-store" });
@@ -492,131 +497,191 @@
     }
   }
 
-  function aggregate(salesByDate, level) {
-    const keyFn = level === "monthly" ? getMonthKey : level === "weekly" ? getWeekKey : (d) => d;
-    const out = {};
+  // ---------- 날짜/주차 유틸 ----------
+
+  function getWeekKey(dateStr) {
+    // 월요일 시작 ~ 일요일 종료 기준. key는 그 주의 월요일 날짜(YYYY-MM-DD).
+    const d = new Date(dateStr + "T00:00:00");
+    const day = d.getDay(); // 0=일, 1=월 ...
+    const diffToMonday = (day + 6) % 7;
+    const start = new Date(d);
+    start.setDate(d.getDate() - diffToMonday);
+    return start.toISOString().slice(0, 10);
+  }
+
+  function addDaysIso(iso, days) {
+    const d = new Date(iso + "T00:00:00");
+    d.setDate(d.getDate() + days);
+    return d.toISOString().slice(0, 10);
+  }
+
+  function shortMD(iso) {
+    const [, m, d] = iso.split("-");
+    return `${parseInt(m, 10)}/${parseInt(d, 10)}`;
+  }
+
+  // ---------- 월별 주차 집계 (03번 패널) ----------
+  // 선택한 월(monthKey, 'YYYY-MM')에 속한 일자만 모아 월요일~일요일 주 단위로 묶는다.
+  // 주차 번호는 그 달 안에서 등장하는 순서대로 1, 2, 3 ... 을 매긴다.
+  function aggregateWeeksForMonth(salesByDate, monthKey) {
+    const groups = {}; // mondayKey -> { order_count, sales_amount }
     Object.values(salesByDate).forEach((row) => {
-      const key = keyFn(row.date);
-      if (!out[key]) out[key] = { key, order_count: 0, sales_amount: 0 };
-      out[key].order_count += row.order_count;
-      out[key].sales_amount += row.sales_amount;
+      if (!row.date.startsWith(monthKey)) return;
+      const wk = getWeekKey(row.date);
+      const g = groups[wk] || { order_count: 0, sales_amount: 0 };
+      g.order_count += row.order_count;
+      g.sales_amount += row.sales_amount;
+      groups[wk] = g;
     });
-    return Object.values(out).sort((a, b) => (a.key < b.key ? 1 : -1)); // 최신순
+
+    const monthNum = parseInt(monthKey.slice(5, 7), 10);
+    return Object.keys(groups)
+      .sort()
+      .map((mondayKey, idx) => {
+        const sundayKey = addDaysIso(mondayKey, 6);
+        return {
+          key: mondayKey,
+          label: `${monthNum}월 ${idx + 1}주차 (${shortMD(mondayKey)}~${shortMD(sundayKey)})`,
+          order_count: groups[mondayKey].order_count,
+          sales_amount: groups[mondayKey].sales_amount,
+        };
+      });
   }
 
-  let chartBars = []; // 호버 툴팁용: 현재 그려진 막대들의 위치/값 정보
-
-  function drawChart(rows, level) {
-    const canvas = document.getElementById("sales-chart");
-    const wrap = document.getElementById("chart-wrap");
-    const width = Math.max(wrap.clientWidth, rows.length * 46);
-    const height = 220;
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-    const ctx = canvas.getContext("2d");
-    ctx.scale(dpr, dpr);
-    ctx.clearRect(0, 0, width, height);
-
-    chartBars = [];
-
-    const ordered = [...rows].reverse(); // 과거 -> 최근
-    if (ordered.length === 0) return;
-
-    const max = Math.max(...ordered.map((r) => r.sales_amount), 1);
-    const padL = 8, padR = 8, padT = 14, padB = 26;
-    const chartW = width - padL - padR;
-    const chartH = height - padT - padB;
-    const barW = Math.min(28, (chartW / ordered.length) * 0.55);
-    const step = chartW / ordered.length;
-
-    ctx.strokeStyle = "#E2E6E1";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(padL, padT + chartH);
-    ctx.lineTo(padL + chartW, padT + chartH);
-    ctx.stroke();
-
-    ordered.forEach((r, i) => {
-      const x = padL + step * i + (step - barW) / 2;
-      const h = max > 0 ? (r.sales_amount / max) * chartH : 0;
-      const y = padT + chartH - h;
-      ctx.fillStyle = "#22493E";
-      ctx.fillRect(x, y, barW, h);
-
-      ctx.fillStyle = "#6B7568";
-      ctx.font = "11px -apple-system, sans-serif";
-      ctx.textAlign = "center";
-      const label = formatKeyLabel(r.key, level);
-      const shortLabel = level === "weekly" ? label : label.slice(5) || label;
-      ctx.fillText(shortLabel, x + barW / 2, padT + chartH + 16);
-
-      chartBars.push({ x, y, w: barW, h, row: r, label });
-    });
+  // ---------- 월별 일자 집계 (04번 패널) ----------
+  function aggregateDaysForMonth(salesByDate, monthKey) {
+    return Object.values(salesByDate)
+      .filter((row) => row.date.startsWith(monthKey))
+      .sort((a, b) => (a.date < b.date ? -1 : 1))
+      .map((row) => ({
+        key: row.date,
+        label: row.date.slice(5), // MM-DD
+        order_count: row.order_count,
+        sales_amount: row.sales_amount,
+      }));
   }
 
-  function setupChartTooltip() {
-    const canvas = document.getElementById("sales-chart");
-    const wrap = document.getElementById("chart-wrap");
-    let tooltip = document.getElementById("chart-tooltip");
-    if (!tooltip) {
-      tooltip = document.createElement("div");
-      tooltip.id = "chart-tooltip";
-      tooltip.style.cssText =
-        "position:absolute; display:none; pointer-events:none; background:#17211D; color:#fff; " +
-        "font-size:12px; padding:6px 10px; border-radius:6px; white-space:nowrap; z-index:10; " +
-        "box-shadow:0 4px 10px rgba(0,0,0,0.15);";
-      wrap.style.position = "relative";
-      wrap.appendChild(tooltip);
+  // ---------- 요일별 집계 (05번 패널) ----------
+  const WEEKDAY_LABELS = ["월", "화", "수", "목", "금", "토", "일"];
+
+  function aggregateByWeekday(salesByDate) {
+    const buckets = WEEKDAY_LABELS.map((label) => ({
+      label,
+      order_count: 0,
+      sales_amount: 0,
+      day_count: 0, // 몇 개의 날짜가 이 요일에 포함됐는지 (일평균 계산용)
+    }));
+
+    Object.values(salesByDate).forEach((row) => {
+      const d = new Date(row.date + "T00:00:00");
+      const idx = (d.getDay() + 6) % 7; // 0=월 ... 6=일
+      buckets[idx].order_count += row.order_count;
+      buckets[idx].sales_amount += row.sales_amount;
+      buckets[idx].day_count += 1;
+    });
+
+    return buckets.map((b) => ({
+      key: b.label,
+      label: b.label + "요일",
+      order_count: b.order_count,
+      sales_amount: b.sales_amount,
+      avg_sales: b.day_count > 0 ? b.sales_amount / b.day_count : 0,
+    }));
+  }
+
+  function monthKeysOf(salesByDate) {
+    const set = new Set(Object.values(salesByDate).map((r) => r.date.slice(0, 7)));
+    return Array.from(set).sort().reverse(); // 최신월 먼저
+  }
+
+  // ---------- 공용 막대 차트 (호버 툴팁 포함) ----------
+  function createBarChart(canvasId, wrapId, tooltipId, opts) {
+    opts = opts || {};
+    const barColor = opts.color || "#22493E";
+    let bars = [];
+
+    function draw(rows) {
+      const canvas = document.getElementById(canvasId);
+      const wrap = document.getElementById(wrapId);
+      const width = Math.max(wrap.clientWidth, rows.length * 46);
+      const height = 200;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      const ctx = canvas.getContext("2d");
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, width, height);
+
+      bars = [];
+      if (rows.length === 0) return;
+
+      const max = Math.max(...rows.map((r) => r.sales_amount), 1);
+      const padL = 8, padR = 8, padT = 14, padB = 26;
+      const chartW = width - padL - padR;
+      const chartH = height - padT - padB;
+      const barW = Math.min(28, (chartW / rows.length) * 0.55);
+      const step = chartW / rows.length;
+
+      ctx.strokeStyle = "#E2E6E1";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padL, padT + chartH);
+      ctx.lineTo(padL + chartW, padT + chartH);
+      ctx.stroke();
+
+      rows.forEach((r, i) => {
+        const x = padL + step * i + (step - barW) / 2;
+        const h = max > 0 ? (r.sales_amount / max) * chartH : 0;
+        const y = padT + chartH - h;
+        ctx.fillStyle = barColor;
+        ctx.fillRect(x, y, barW, h);
+
+        ctx.fillStyle = "#6B7568";
+        ctx.font = "11px -apple-system, sans-serif";
+        ctx.textAlign = "center";
+        const axisLabel = opts.axisLabel ? opts.axisLabel(r) : r.label;
+        ctx.fillText(axisLabel, x + barW / 2, padT + chartH + 16);
+
+        bars.push({ x, y, w: barW, h, row: r });
+      });
     }
 
-    canvas.addEventListener("mousemove", (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      const hit = chartBars.find(
-        (b) => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h + 30
-      );
-      if (hit) {
-        tooltip.innerHTML = `<strong>${hit.label}</strong><br/>${fmtWon(hit.row.sales_amount)} · ${fmtInt(hit.row.order_count)}건`;
-        tooltip.style.left = hit.x + hit.w / 2 - tooltip.offsetWidth / 2 + "px";
-        tooltip.style.top = Math.max(hit.y - 44, 0) + "px";
-        tooltip.style.display = "block";
-        canvas.style.cursor = "pointer";
-      } else {
+    function attachTooltip() {
+      const canvas = document.getElementById(canvasId);
+      const tooltip = document.getElementById(tooltipId);
+
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        const hit = bars.find(
+          (b) => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h + 30
+        );
+        if (hit) {
+          tooltip.innerHTML = `<strong>${hit.row.label}</strong><br/>${fmtWon(hit.row.sales_amount)} · ${fmtInt(hit.row.order_count)}건`;
+          tooltip.style.left = hit.x + hit.w / 2 - tooltip.offsetWidth / 2 + "px";
+          tooltip.style.top = Math.max(hit.y - 44, 0) + "px";
+          tooltip.style.display = "block";
+          canvas.style.cursor = "pointer";
+        } else {
+          tooltip.style.display = "none";
+          canvas.style.cursor = "default";
+        }
+      });
+      canvas.addEventListener("mouseleave", () => {
         tooltip.style.display = "none";
-        canvas.style.cursor = "default";
-      }
-    });
-
-    canvas.addEventListener("mouseleave", () => {
-      tooltip.style.display = "none";
-    });
-  }
-
-  function renderTable(rows, level) {
-    const tbody = document.getElementById("table-body");
-    if (rows.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="4" class="empty-state">표시할 데이터가 없습니다.</td></tr>';
-      return;
+      });
     }
-    tbody.innerHTML = rows
-      .slice(0, 30)
-      .map(
-        (r) => `
-        <tr>
-          <td>${formatKeyLabel(r.key, level)}</td>
-          <td><span class="channel-pill">카페24</span></td>
-          <td class="cell-count">${fmtInt(r.order_count)}건</td>
-          <td class="cell-amount">${fmtWon(r.sales_amount)}</td>
-        </tr>`
-      )
-      .join("");
+
+    return { draw, attachTooltip };
   }
 
-  function renderKPI(rows, refundStats) {
+  // ---------- 렌더 함수들 ----------
+
+  function renderKPI(salesByDate, refundStats) {
+    const rows = Object.values(salesByDate);
     const totalSales = rows.reduce((sum, r) => sum + r.sales_amount, 0);
     const totalOrders = rows.reduce((sum, r) => sum + r.order_count, 0);
     const aov = totalOrders > 0 ? totalSales / totalOrders : 0;
@@ -656,7 +721,7 @@
   function renderProductTable(productByMonth) {
     const tbody = document.getElementById("product-table-body");
     const monthSelect = document.getElementById("product-month-select");
-    const months = Object.keys(productByMonth || {}).sort().reverse(); // 최신 월 먼저
+    const months = Object.keys(productByMonth || {}).sort().reverse();
 
     if (months.length === 0) {
       monthSelect.innerHTML = "";
@@ -664,7 +729,6 @@
       return;
     }
 
-    // 드롭다운을 아직 안 채웠거나 월 목록이 바뀐 경우에만 다시 채움 (선택 유지)
     const currentOptions = Array.from(monthSelect.options).map((o) => o.value);
     if (currentOptions.join(",") !== months.join(",")) {
       monthSelect.innerHTML = months.map((m) => `<option value="${m}">${m}</option>`).join("");
@@ -693,6 +757,29 @@
       .join("");
   }
 
+  function renderGenericTable(tbodyId, rows, columns) {
+    const tbody = document.getElementById(tbodyId);
+    if (rows.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="${columns}" class="empty-state">표시할 데이터가 없습니다.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = rows
+      .map((r) =>
+        columns === 3
+          ? `<tr><td>${r.label}</td><td class="cell-count">${fmtInt(r.order_count)}건</td><td class="cell-amount">${fmtWon(r.sales_amount)}</td></tr>`
+          : `<tr><td>${r.label}</td><td class="cell-count">${fmtInt(r.order_count)}건</td><td class="cell-amount">${fmtWon(r.sales_amount)}</td><td class="cell-amount">${fmtWon(r.avg_sales)}</td></tr>`
+      )
+      .join("");
+  }
+
+  function populateMonthSelect(selectEl, months) {
+    const currentOptions = Array.from(selectEl.options).map((o) => o.value);
+    if (currentOptions.join(",") !== months.join(",")) {
+      selectEl.innerHTML = months.map((m) => `<option value="${m}">${m}</option>`).join("");
+    }
+    return selectEl.value || months[0];
+  }
+
   async function init() {
     const [cafe24Data, naverData] = await Promise.all([
       fetchJSON(CAFE24_URL),
@@ -704,7 +791,6 @@
 
     if (!cafe24Data) {
       syncNote.textContent = "카페24 데이터를 아직 불러오지 못했습니다. data/cafe24-orders.json을 확인해 주세요.";
-      renderTable([]);
       return;
     }
 
@@ -714,33 +800,72 @@
       : "동기화 기록 없음";
     statusLine.textContent = "네이버 스마트스토어 데이터가 연동되면 이 화면에 자동으로 함께 표시됩니다.";
 
-    const levelSelect = document.getElementById("period-level");
-    const chartNote = document.getElementById("chart-note");
-    const rangeLabel = document.getElementById("range-label");
+    // 01, KPI: 누적 전체 기간 기준으로 고정 표시
+    renderKPI(salesByDate, cafe24Data.refund_stats);
+    renderChannelTable(cafe24Data.channel_breakdown);
 
-    function render() {
-      const level = levelSelect.value;
-      const rows = aggregate(salesByDate, level);
-      renderKPI(rows, cafe24Data.refund_stats);
-      drawChart(rows.slice(0, 30), level);
-      renderTable(rows, level);
-      renderChannelTable(cafe24Data.channel_breakdown);
-      renderProductTable(cafe24Data.product_breakdown);
-      chartNote.textContent = level === "monthly" ? "월별" : level === "weekly" ? "주차별" : "일별";
-      rangeLabel.textContent =
-        level === "monthly" ? "월별 집계" : level === "weekly" ? "주차별 집계 (월요일~일요일)" : "최근 데이터 기준 일별 집계";
-    }
-
-    levelSelect.addEventListener("change", render);
-    window.addEventListener("resize", () =>
-      drawChart(aggregate(salesByDate, levelSelect.value).slice(0, 30), levelSelect.value)
-    );
+    // 02. 판매 상품 순위
+    renderProductTable(cafe24Data.product_breakdown);
     document
       .getElementById("product-month-select")
       .addEventListener("change", () => renderProductTable(cafe24Data.product_breakdown));
 
-    setupChartTooltip();
-    render();
+    // 03. 주차별 매출 추이
+    const weeklyChart = createBarChart("weekly-chart", "weekly-chart-wrap", "weekly-tooltip", {
+      axisLabel: (r) => r.axisShortLabel || r.label,
+    });
+    weeklyChart.attachTooltip();
+
+    const months = monthKeysOf(salesByDate);
+    const weeklyMonthSelect = document.getElementById("weekly-month-select");
+    const dailyMonthSelect = document.getElementById("daily-month-select");
+
+    function renderWeekly() {
+      const selMonth = populateMonthSelect(weeklyMonthSelect, months);
+      const rows = aggregateWeeksForMonth(salesByDate, selMonth).map((r) => ({
+        ...r,
+        axisShortLabel: r.label.split(" ")[1], // "9월 1주차 (...)" -> "1주차"
+      }));
+      weeklyChart.draw(rows);
+      renderGenericTable("weekly-table-body", rows, 3);
+    }
+
+    // 04. 일자별 매출 추이
+    const dailyChart = createBarChart("daily-chart", "daily-chart-wrap", "daily-tooltip", {});
+    dailyChart.attachTooltip();
+
+    function renderDaily() {
+      const selMonth = populateMonthSelect(dailyMonthSelect, months);
+      const rows = aggregateDaysForMonth(salesByDate, selMonth);
+      dailyChart.draw(rows);
+      renderGenericTable("daily-table-body", rows, 3);
+    }
+
+    weeklyMonthSelect.addEventListener("change", renderWeekly);
+    dailyMonthSelect.addEventListener("change", renderDaily);
+
+    // 05. 요일별 매출 데이터
+    const weekdayChart = createBarChart("weekday-chart", "weekday-chart-wrap", "weekday-tooltip", {
+      color: "#E0972E",
+      axisLabel: (r) => r.key,
+    });
+    weekdayChart.attachTooltip();
+
+    function renderWeekday() {
+      const rows = aggregateByWeekday(salesByDate);
+      weekdayChart.draw(rows);
+      renderGenericTable("weekday-table-body", rows, 4);
+    }
+
+    window.addEventListener("resize", () => {
+      renderWeekly();
+      renderDaily();
+      renderWeekday();
+    });
+
+    renderWeekly();
+    renderDaily();
+    renderWeekday();
   }
 
   init();
