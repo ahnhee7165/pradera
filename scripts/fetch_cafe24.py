@@ -88,13 +88,34 @@ def fetch_orders(access_token, start_date, end_date):
     return orders
 
 
-def fetch_salesreport(access_token, start_date, end_date):
-    data = api_get(
-        access_token,
-        "reports/salesvolumebydate",
-        {"start_date": start_date, "end_date": end_date},
-    )
-    return data.get("salesvolumebydate", [])
+def build_salesreport(all_orders):
+    """
+    별도 매출통계 API 대신, 보유 중인 주문 전체(all_orders)에서
+    날짜별 매출/주문건수를 직접 집계한다.
+    all_orders는 order_id -> order 객체 딕셔너리.
+    """
+    daily = {}
+    for order in all_orders.values():
+        if order.get("canceled") == "T":
+            continue  # 취소 주문은 매출에서 제외
+
+        order_date = (order.get("order_date") or "")[:10]  # 'YYYY-MM-DD'
+        if not order_date:
+            continue
+
+        amounts = order.get("actual_order_amount") or {}
+        try:
+            order_amount = float(amounts.get("order_price_amount", 0) or 0)
+        except (TypeError, ValueError):
+            order_amount = 0.0
+
+        row = daily.setdefault(
+            order_date, {"date": order_date, "order_count": 0, "sales_amount": 0.0}
+        )
+        row["order_count"] += 1
+        row["sales_amount"] += order_amount
+
+    return daily
 
 
 def load_existing():
@@ -118,7 +139,6 @@ def main():
     end_date = today.isoformat()
 
     orders = fetch_orders(access_token, start_date, end_date)
-    salesreport = fetch_salesreport(access_token, start_date, end_date)
 
     store = load_existing()
 
@@ -126,9 +146,8 @@ def main():
     for order in orders:
         store["orders"][order["order_id"]] = order
 
-    # 날짜 기준으로 매출통계를 덮어씀
-    for row in salesreport:
-        store["salesreport"][row["date"]] = row
+    # 보유한 주문 전체를 기준으로 날짜별 매출을 다시 집계 (salesreport API 미사용)
+    store["salesreport"] = build_salesreport(store["orders"])
 
     store["last_synced_at"] = datetime.datetime.utcnow().isoformat() + "Z"
 
@@ -141,8 +160,8 @@ def main():
             f.write(f"new_refresh_token={new_refresh_token}\n")
 
     print(
-        f"동기화 완료: 주문 {len(orders)}건, "
-        f"매출통계 {len(salesreport)}일치 (기간 {start_date} ~ {end_date})"
+        f"동기화 완료: 주문 {len(orders)}건 갱신, "
+        f"누적 매출통계 {len(store['salesreport'])}일치 (조회기간 {start_date} ~ {end_date})"
     )
 
 
