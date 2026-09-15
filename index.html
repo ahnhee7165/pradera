@@ -360,10 +360,52 @@
         <div class="kpi-value" id="kpi-aov">–</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">연동 채널</div>
-        <div class="kpi-value" id="kpi-channels">1 / 2</div>
+        <div class="kpi-label">취소율</div>
+        <div class="kpi-value" id="kpi-cancel-rate">–</div>
+        <div class="kpi-delta" id="kpi-cancel-count"></div>
       </div>
     </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">유입 채널별 매출</div>
+        <div class="panel-note">누적 전체 기간 · 카페24 결제경로 기준</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>채널</th>
+            <th style="text-align:right;">주문건수</th>
+            <th style="text-align:right;">매출</th>
+            <th style="text-align:right;">비중</th>
+          </tr>
+        </thead>
+        <tbody id="channel-table-body">
+          <tr><td colspan="4" class="empty-state">불러오는 중…</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">월별 판매 상품 순위</div>
+        <select id="product-month-select" style="font-size:12.5px; padding:5px 8px; border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--ink);"></select>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>순위</th>
+            <th>상품명</th>
+            <th style="text-align:right;">판매수량</th>
+            <th style="text-align:right;">매출</th>
+          </tr>
+        </thead>
+        <tbody id="product-table-body">
+          <tr><td colspan="4" class="empty-state">불러오는 중…</td></tr>
+        </tbody>
+      </table>
+    </section>
+
 
     <section class="panel">
       <div class="panel-head">
@@ -513,7 +555,7 @@
       .join("");
   }
 
-  function renderKPI(rows, hasNaver) {
+  function renderKPI(rows, refundStats) {
     const totalSales = rows.reduce((sum, r) => sum + r.sales_amount, 0);
     const totalOrders = rows.reduce((sum, r) => sum + r.order_count, 0);
     const aov = totalOrders > 0 ? totalSales / totalOrders : 0;
@@ -521,7 +563,73 @@
     document.getElementById("kpi-sales").textContent = fmtWon(totalSales);
     document.getElementById("kpi-orders").textContent = fmtInt(totalOrders) + "건";
     document.getElementById("kpi-aov").textContent = fmtWon(aov);
-    document.getElementById("kpi-channels").textContent = hasNaver ? "2 / 2" : "1 / 2";
+
+    const rate = refundStats && refundStats.cancel_rate ? refundStats.cancel_rate : 0;
+    document.getElementById("kpi-cancel-rate").textContent = (rate * 100).toFixed(1) + "%";
+    document.getElementById("kpi-cancel-count").textContent = refundStats
+      ? `취소 ${fmtInt(refundStats.total_canceled || 0)}건 / 전체 ${fmtInt(refundStats.total_orders || 0)}건`
+      : "";
+  }
+
+  function renderChannelTable(channelBreakdown) {
+    const tbody = document.getElementById("channel-table-body");
+    const rows = Object.values(channelBreakdown || {}).sort((a, b) => b.sales_amount - a.sales_amount);
+    if (rows.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" class="empty-state">표시할 데이터가 없습니다.</td></tr>';
+      return;
+    }
+    const total = rows.reduce((sum, r) => sum + r.sales_amount, 0) || 1;
+    tbody.innerHTML = rows
+      .map(
+        (r) => `
+        <tr>
+          <td>${r.channel}</td>
+          <td class="cell-count">${fmtInt(r.order_count)}건</td>
+          <td class="cell-amount">${fmtWon(r.sales_amount)}</td>
+          <td class="cell-count">${((r.sales_amount / total) * 100).toFixed(1)}%</td>
+        </tr>`
+      )
+      .join("");
+  }
+
+  function renderProductTable(productByMonth) {
+    const tbody = document.getElementById("product-table-body");
+    const monthSelect = document.getElementById("product-month-select");
+    const months = Object.keys(productByMonth || {}).sort().reverse(); // 최신 월 먼저
+
+    if (months.length === 0) {
+      monthSelect.innerHTML = "";
+      tbody.innerHTML = '<tr><td colspan="4" class="empty-state">표시할 상품 데이터가 없습니다.</td></tr>';
+      return;
+    }
+
+    // 드롭다운을 아직 안 채웠거나 월 목록이 바뀐 경우에만 다시 채움 (선택 유지)
+    const currentOptions = Array.from(monthSelect.options).map((o) => o.value);
+    if (currentOptions.join(",") !== months.join(",")) {
+      monthSelect.innerHTML = months.map((m) => `<option value="${m}">${m}</option>`).join("");
+    }
+
+    const selectedMonth = monthSelect.value || months[0];
+    const rows = Object.values(productByMonth[selectedMonth] || {})
+      .sort((a, b) => b.quantity - a.quantity)
+      .slice(0, 10);
+
+    if (rows.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" class="empty-state">해당 월에 판매된 상품이 없습니다.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = rows
+      .map(
+        (r, i) => `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${r.product_name}</td>
+          <td class="cell-count">${fmtInt(r.quantity)}개</td>
+          <td class="cell-amount">${fmtWon(r.sales_amount)}</td>
+        </tr>`
+      )
+      .join("");
   }
 
   async function init() {
@@ -552,9 +660,11 @@
     function render() {
       const level = levelSelect.value;
       const rows = aggregate(salesByDate, level);
-      renderKPI(rows, !!naverData);
+      renderKPI(rows, cafe24Data.refund_stats);
       drawChart(rows.slice(0, 30));
       renderTable(rows);
+      renderChannelTable(cafe24Data.channel_breakdown);
+      renderProductTable(cafe24Data.product_breakdown);
       chartNote.textContent = level === "monthly" ? "월별" : level === "weekly" ? "주차별" : "일별";
       rangeLabel.textContent =
         level === "monthly" ? "월별 집계" : level === "weekly" ? "주차별 집계 (금요일 시작)" : "최근 데이터 기준 일별 집계";
@@ -562,6 +672,9 @@
 
     levelSelect.addEventListener("change", render);
     window.addEventListener("resize", () => drawChart(aggregate(salesByDate, levelSelect.value).slice(0, 30)));
+    document
+      .getElementById("product-month-select")
+      .addEventListener("change", () => renderProductTable(cafe24Data.product_breakdown));
 
     render();
   }
