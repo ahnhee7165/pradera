@@ -455,16 +455,31 @@
   const fmtInt = (n) => n.toLocaleString("ko-KR");
 
   function getWeekKey(dateStr) {
+    // 월요일 시작 ~ 일요일 종료 기준. key는 그 주의 월요일 날짜(YYYY-MM-DD).
     const d = new Date(dateStr + "T00:00:00");
-    const day = d.getDay(); // 0=일
-    const diffToFriday = (day + 2) % 7; // 금요일 시작 주차 기준 (기존 대시보드 규칙과 동일)
+    const day = d.getDay(); // 0=일, 1=월 ...
+    const diffToMonday = (day + 6) % 7; // 월요일까지 며칠 전인지
     const start = new Date(d);
-    start.setDate(d.getDate() - diffToFriday);
+    start.setDate(d.getDate() - diffToMonday);
     return start.toISOString().slice(0, 10);
   }
 
   function getMonthKey(dateStr) {
     return dateStr.slice(0, 7); // YYYY-MM
+  }
+
+  // 주차 key(그 주의 월요일 날짜)를 "9월 2주차" 같은 표시용 라벨로 변환.
+  // 월 안에서 몇 번째 월요일인지로 주차를 매긴다 (1~7일: 1주차, 8~14일: 2주차 ...).
+  function weekLabel(mondayIso) {
+    const d = new Date(mondayIso + "T00:00:00");
+    const month = d.getMonth() + 1;
+    const weekIndex = Math.ceil(d.getDate() / 7);
+    return `${month}월 ${weekIndex}주차`;
+  }
+
+  function formatKeyLabel(key, level) {
+    if (level === "weekly") return weekLabel(key);
+    return key; // 월별(YYYY-MM), 일별(YYYY-MM-DD)은 그대로 표기
   }
 
   async function fetchJSON(url) {
@@ -489,7 +504,9 @@
     return Object.values(out).sort((a, b) => (a.key < b.key ? 1 : -1)); // 최신순
   }
 
-  function drawChart(rows) {
+  let chartBars = []; // 호버 툴팁용: 현재 그려진 막대들의 위치/값 정보
+
+  function drawChart(rows, level) {
     const canvas = document.getElementById("sales-chart");
     const wrap = document.getElementById("chart-wrap");
     const width = Math.max(wrap.clientWidth, rows.length * 46);
@@ -502,6 +519,8 @@
     const ctx = canvas.getContext("2d");
     ctx.scale(dpr, dpr);
     ctx.clearRect(0, 0, width, height);
+
+    chartBars = [];
 
     const ordered = [...rows].reverse(); // 과거 -> 최근
     if (ordered.length === 0) return;
@@ -530,12 +549,54 @@
       ctx.fillStyle = "#6B7568";
       ctx.font = "11px -apple-system, sans-serif";
       ctx.textAlign = "center";
-      const label = r.key.length === 10 ? r.key.slice(5) : r.key.length === 7 ? r.key.slice(5) : r.key.slice(5);
-      ctx.fillText(label, x + barW / 2, padT + chartH + 16);
+      const label = formatKeyLabel(r.key, level);
+      const shortLabel = level === "weekly" ? label : label.slice(5) || label;
+      ctx.fillText(shortLabel, x + barW / 2, padT + chartH + 16);
+
+      chartBars.push({ x, y, w: barW, h, row: r, label });
     });
   }
 
-  function renderTable(rows) {
+  function setupChartTooltip() {
+    const canvas = document.getElementById("sales-chart");
+    const wrap = document.getElementById("chart-wrap");
+    let tooltip = document.getElementById("chart-tooltip");
+    if (!tooltip) {
+      tooltip = document.createElement("div");
+      tooltip.id = "chart-tooltip";
+      tooltip.style.cssText =
+        "position:absolute; display:none; pointer-events:none; background:#17211D; color:#fff; " +
+        "font-size:12px; padding:6px 10px; border-radius:6px; white-space:nowrap; z-index:10; " +
+        "box-shadow:0 4px 10px rgba(0,0,0,0.15);";
+      wrap.style.position = "relative";
+      wrap.appendChild(tooltip);
+    }
+
+    canvas.addEventListener("mousemove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      const hit = chartBars.find(
+        (b) => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h + 30
+      );
+      if (hit) {
+        tooltip.innerHTML = `<strong>${hit.label}</strong><br/>${fmtWon(hit.row.sales_amount)} · ${fmtInt(hit.row.order_count)}건`;
+        tooltip.style.left = hit.x + hit.w / 2 - tooltip.offsetWidth / 2 + "px";
+        tooltip.style.top = Math.max(hit.y - 44, 0) + "px";
+        tooltip.style.display = "block";
+        canvas.style.cursor = "pointer";
+      } else {
+        tooltip.style.display = "none";
+        canvas.style.cursor = "default";
+      }
+    });
+
+    canvas.addEventListener("mouseleave", () => {
+      tooltip.style.display = "none";
+    });
+  }
+
+  function renderTable(rows, level) {
     const tbody = document.getElementById("table-body");
     if (rows.length === 0) {
       tbody.innerHTML = '<tr><td colspan="4" class="empty-state">표시할 데이터가 없습니다.</td></tr>';
@@ -546,7 +607,7 @@
       .map(
         (r) => `
         <tr>
-          <td>${r.key}</td>
+          <td>${formatKeyLabel(r.key, level)}</td>
           <td><span class="channel-pill">카페24</span></td>
           <td class="cell-count">${fmtInt(r.order_count)}건</td>
           <td class="cell-amount">${fmtWon(r.sales_amount)}</td>
@@ -661,21 +722,24 @@
       const level = levelSelect.value;
       const rows = aggregate(salesByDate, level);
       renderKPI(rows, cafe24Data.refund_stats);
-      drawChart(rows.slice(0, 30));
-      renderTable(rows);
+      drawChart(rows.slice(0, 30), level);
+      renderTable(rows, level);
       renderChannelTable(cafe24Data.channel_breakdown);
       renderProductTable(cafe24Data.product_breakdown);
       chartNote.textContent = level === "monthly" ? "월별" : level === "weekly" ? "주차별" : "일별";
       rangeLabel.textContent =
-        level === "monthly" ? "월별 집계" : level === "weekly" ? "주차별 집계 (금요일 시작)" : "최근 데이터 기준 일별 집계";
+        level === "monthly" ? "월별 집계" : level === "weekly" ? "주차별 집계 (월요일~일요일)" : "최근 데이터 기준 일별 집계";
     }
 
     levelSelect.addEventListener("change", render);
-    window.addEventListener("resize", () => drawChart(aggregate(salesByDate, levelSelect.value).slice(0, 30)));
+    window.addEventListener("resize", () =>
+      drawChart(aggregate(salesByDate, levelSelect.value).slice(0, 30), levelSelect.value)
+    );
     document
       .getElementById("product-month-select")
       .addEventListener("change", () => renderProductTable(cafe24Data.product_breakdown));
 
+    setupChartTooltip();
     render();
   }
 
