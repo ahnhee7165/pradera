@@ -22,7 +22,6 @@ jobs:
 
       - name: 카페24 데이터 가져오기
         id: fetch
-        continue-on-error: true # 이후 단계 실패해도 이미 받은 새 refresh_token은 살려야 함
         env:
           CAFE24_CLIENT_ID: ${{ secrets.CAFE24_CLIENT_ID }}
           CAFE24_CLIENT_SECRET: ${{ secrets.CAFE24_CLIENT_SECRET }}
@@ -31,7 +30,6 @@ jobs:
         run: python scripts/fetch_cafe24.py
 
       - name: 변경사항 커밋 및 푸시
-        if: always() && steps.fetch.outputs.new_refresh_token != ''
         run: |
           git config user.name "cafe24-sync-bot"
           git config user.email "actions@github.com"
@@ -40,14 +38,9 @@ jobs:
           git push
 
       - name: 새 refresh_token을 저장소 Secret에 반영
-        if: always() && steps.fetch.outputs.new_refresh_token != ''
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           gh secret set CAFE24_REFRESH_TOKEN \
             --repo ${{ github.repository }} \
             --body "${{ steps.fetch.outputs.new_refresh_token }}"
-
-      - name: 데이터 수집 단계가 실패했다면 여기서 잡 실패 처리
-        if: steps.fetch.outcome == 'failure'
-        run: exit 1
