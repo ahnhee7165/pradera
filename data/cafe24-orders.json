@@ -99,6 +99,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -383,6 +384,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -654,7 +656,7 @@
       "eu_customs_fee": "0.00",
       "shipping_type": "A",
       "shipping_type_text": "국내배송",
-      "shipping_status": "M",
+      "shipping_status": "T",
       "wished_delivery_date": "0000-00-00",
       "wished_delivery_time": null,
       "wished_carrier_id": 0,
@@ -667,6 +669,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -715,12 +718,12 @@
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N30",
+          "order_status": "N40",
           "request_undone": null,
           "order_status_additional_info": "",
           "claim_quantity": 0,
           "status_code": "N1",
-          "status_text": "배송중",
+          "status_text": "배송완료",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "4",
@@ -744,7 +747,7 @@
           "store_pickup": "F",
           "ordered_date": "2026-09-14T23:40:48+09:00",
           "shipped_date": "2026-09-15T11:15:29+09:00",
-          "delivered_date": null,
+          "delivered_date": "2026-09-22T00:28:13+09:00",
           "purchaseconfirmation_date": null,
           "cancel_date": null,
           "return_confirmed_date": null,
@@ -853,12 +856,12 @@
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N30",
+          "order_status": "N40",
           "request_undone": null,
           "order_status_additional_info": "",
           "claim_quantity": 0,
           "status_code": "N1",
-          "status_text": "배송중",
+          "status_text": "배송완료",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "4",
@@ -882,7 +885,7 @@
           "store_pickup": "F",
           "ordered_date": "2026-09-14T23:40:48+09:00",
           "shipped_date": "2026-09-15T11:15:29+09:00",
-          "delivered_date": null,
+          "delivered_date": "2026-09-22T00:28:13+09:00",
           "purchaseconfirmation_date": null,
           "cancel_date": null,
           "return_confirmed_date": null,
@@ -1091,6 +1094,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -1367,6 +1371,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -1651,6 +1656,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -1930,6 +1936,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -2209,6 +2216,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -2464,6 +2472,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -2750,6 +2759,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -3001,6 +3011,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -3280,6 +3291,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -3683,6 +3695,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -25399,6 +25412,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -484208,6 +484222,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -484492,6 +484507,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -484774,6 +484790,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -485060,6 +485077,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -485328,6 +485346,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -485607,6 +485626,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -485886,6 +485906,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -486170,6 +486191,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -486449,6 +486471,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -486712,6 +486735,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -486996,6 +487020,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -487275,6 +487300,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -487557,6 +487583,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -487836,6 +487863,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -488115,6 +488143,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -488397,6 +488426,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -488673,6 +488703,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -488957,6 +488988,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -489243,6 +489275,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -490027,6 +490060,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -490306,6 +490340,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -490587,6 +490622,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -490850,6 +490886,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -491253,6 +491290,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -491639,6 +491677,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -491923,6 +491962,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -492211,6 +492251,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -492483,6 +492524,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -492746,6 +492788,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -493150,6 +493193,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -493413,6 +493457,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -493685,6 +493730,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -493953,6 +493999,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -494239,6 +494286,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -494502,6 +494550,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -494763,6 +494812,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -495024,6 +495074,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -495285,6 +495336,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -495546,6 +495598,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -495809,6 +495862,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -496072,6 +496126,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -496356,6 +496411,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -496635,6 +496691,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -496906,6 +496963,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -497194,6 +497252,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -497459,6 +497518,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -497722,6 +497782,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -497987,6 +498048,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -498263,6 +498325,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -498543,6 +498606,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -498808,6 +498872,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -499076,6 +499141,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -500055,6 +500121,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -500334,6 +500401,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -500618,6 +500686,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -500897,6 +500966,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -501183,6 +501253,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -501836,6 +501907,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -502120,6 +502192,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -502404,6 +502477,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -502675,6 +502749,7 @@
       "easypay_name": "",
       "loan_status": null,
       "subscription": "F",
+      "subscription_id": null,
       "items": [
         {
           "shop_no": 1,
@@ -502844,6 +502919,277 @@
         "prepaid"
       ],
       "naverpay_payment_information": "N",
+      "include_tax": "T",
+      "tax_detail": null,
+      "service_type": null,
+      "service_data": null,
+      "show_shipping_address": "T",
+      "social_member_code": null,
+      "social_name": null
+    },
+    "20260921-0000061": {
+      "shop_no": 1,
+      "currency": "KRW",
+      "order_id": "20260921-0000061",
+      "market_id": "mobile",
+      "market_order_no": null,
+      "member_id": "",
+      "member_email": null,
+      "member_authentication": null,
+      "billing_name": "홍준서",
+      "bank_code": "bank_03",
+      "bank_code_name": "기업은행",
+      "payment_method": [
+        "icash"
+      ],
+      "payment_method_name": [
+        "가상계좌"
+      ],
+      "payment_gateway_names": [
+        "dacom"
+      ],
+      "sub_payment_method_name": null,
+      "sub_payment_method_code": null,
+      "transaction_ids": [
+        {
+          "payment_gateway_name": "dacom",
+          "id": "CF_pr20260921230552HYCf1"
+        }
+      ],
+      "paid": "F",
+      "canceled": "F",
+      "order_date": "2026-09-21T23:05:53+09:00",
+      "first_order": "F",
+      "payment_date": null,
+      "order_from_mobile": "T",
+      "use_escrow": "F",
+      "group_no_when_ordering": "0",
+      "initial_order_amount": {
+        "order_price_amount": "40900.00",
+        "shipping_fee": "0.00",
+        "points_spent_amount": "0.00",
+        "credits_spent_amount": "0.00",
+        "coupon_discount_price": "0.00",
+        "coupon_shipping_fee_amount": "0.00",
+        "membership_discount_amount": "0.00",
+        "shipping_fee_discount_amount": "0.00",
+        "set_product_discount_amount": "0.00",
+        "app_discount_amount": "0.00",
+        "point_incentive_amount": "0.00",
+        "total_amount_due": "40900.00",
+        "payment_amount": "0.00",
+        "market_other_discount_amount": "0.00",
+        "tax": null
+      },
+      "actual_order_amount": {
+        "order_price_amount": "40900.00",
+        "shipping_fee": "0.00",
+        "points_spent_amount": "0.00",
+        "credits_spent_amount": "0.00",
+        "coupon_discount_price": "0.00",
+        "coupon_shipping_fee_amount": "0.00",
+        "membership_discount_amount": "0.00",
+        "shipping_fee_discount_amount": "0.00",
+        "set_product_discount_amount": "0.00",
+        "app_discount_amount": "0.00",
+        "point_incentive_amount": "0.00",
+        "total_amount_due": "40900.00",
+        "payment_amount": "0.00",
+        "market_other_discount_amount": "0.00",
+        "tax": null
+      },
+      "bank_account_no": "48011694097145",
+      "bank_account_owner_name": null,
+      "market_seller_id": null,
+      "payment_amount": "0.00",
+      "cancel_date": null,
+      "order_place_name": "모바일웹",
+      "order_place_id": "mobile",
+      "payment_confirmation": null,
+      "commission": "0.00",
+      "postpay": "F",
+      "admin_additional_amount": null,
+      "additional_shipping_fee": "0.00",
+      "international_shipping_insurance": "0.00",
+      "additional_handling_fee": "0.00",
+      "eu_customs_fee": "0.00",
+      "shipping_type": "A",
+      "shipping_type_text": "국내배송",
+      "shipping_status": "F",
+      "wished_delivery_date": "",
+      "wished_delivery_time": null,
+      "wished_carrier_id": null,
+      "wished_carrier_name": null,
+      "return_confirmed_date": null,
+      "total_supply_price": "29900",
+      "naver_point": null,
+      "additional_order_info_list": [],
+      "store_pickup": "F",
+      "easypay_name": "",
+      "loan_status": null,
+      "subscription": "F",
+      "subscription_id": null,
+      "items": [
+        {
+          "shop_no": 1,
+          "item_no": 2007,
+          "order_item_code": "20260921-0000061-01",
+          "variant_code": "P00000BP000I",
+          "product_no": 41,
+          "product_code": "P00000BP",
+          "internal_product_name": "",
+          "custom_product_code": "",
+          "custom_variant_code": null,
+          "eng_product_name": "",
+          "option_id": "000I",
+          "option_value": "색상1=바닐라푸딩, 색상2=바닐라푸딩",
+          "option_value_default": "색상1=바닐라푸딩, 색상2=바닐라푸딩",
+          "additional_option_value": "",
+          "additional_option_values": [
+            {
+              "key": null,
+              "type": null,
+              "name": null,
+              "value": null
+            }
+          ],
+          "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
+          "product_name_default": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
+          "product_price": "24900.00",
+          "option_price": "16000.00",
+          "additional_discount_price": "0.00",
+          "coupon_discount_price": "0.00",
+          "app_item_discount_amount": null,
+          "payment_amount": "40900.00",
+          "quantity": 1,
+          "product_tax_type": "A",
+          "tax_rate": 10,
+          "supplier_product_name": "",
+          "supplier_transaction_type": " ",
+          "supplier_id": "S0000000",
+          "supplier_name": "자체공급",
+          "tracking_no": null,
+          "shipping_code": "D-20260921-0000061-00",
+          "claim_code": null,
+          "claim_reason_type": null,
+          "claim_reason": null,
+          "refund_bank_name": "",
+          "refund_bank_account_no": "",
+          "refund_bank_account_holder": "",
+          "post_express_flag": null,
+          "order_status": "N00",
+          "request_undone": null,
+          "order_status_additional_info": "",
+          "claim_quantity": 0,
+          "status_code": "N1",
+          "status_text": "입금전",
+          "open_market_status": "",
+          "bundled_shipping_type": "N",
+          "shipping_company_id": "0",
+          "shipping_company_name": null,
+          "shipping_company_code": null,
+          "product_bundle": "F",
+          "product_bundle_no": "0",
+          "product_bundle_name": null,
+          "product_bundle_name_default": null,
+          "product_bundle_type": null,
+          "was_product_bundle": null,
+          "original_bundle_item_no": null,
+          "naver_pay_order_id": null,
+          "naver_pay_claim_status": null,
+          "individual_shipping_fee": "0.00",
+          "shipping_fee_type": "T",
+          "shipping_fee_type_text": "무료",
+          "shipping_payment_option": "F",
+          "payment_info_id": "0",
+          "original_item_no": [],
+          "store_pickup": "F",
+          "ordered_date": null,
+          "shipped_date": null,
+          "delivered_date": null,
+          "purchaseconfirmation_date": null,
+          "cancel_date": null,
+          "return_confirmed_date": null,
+          "return_request_date": null,
+          "return_collected_date": null,
+          "cancel_request_date": null,
+          "refund_date": null,
+          "exchange_request_date": null,
+          "exchange_date": null,
+          "product_material": "",
+          "product_material_eng": null,
+          "cloth_fabric": null,
+          "product_weight": "0.10",
+          "volume_size": null,
+          "volume_size_weight": null,
+          "clearance_category": null,
+          "clearance_category_info": null,
+          "clearance_category_code": null,
+          "hs_code": "",
+          "one_plus_n_event": null,
+          "origin_place": "국내 ",
+          "origin_place_no": 1798,
+          "made_in_code": "KR",
+          "origin_place_value": "",
+          "gift": "F",
+          "item_granting_gift": null,
+          "subscription": "F",
+          "product_bundle_list": null,
+          "market_cancel_request": null,
+          "market_cancel_request_quantity": null,
+          "market_fail_reason": null,
+          "market_fail_reason_guide": null,
+          "market_fail_reason_type": null,
+          "market_item_no": null,
+          "market_custom_variant_code": null,
+          "option_type": "T",
+          "options": [
+            {
+              "option_code": null,
+              "option_name": "색상1",
+              "option_value": {
+                "option_text": "바닐라푸딩",
+                "value_no": null
+              }
+            },
+            {
+              "option_code": null,
+              "option_name": "색상2",
+              "option_value": {
+                "option_text": "바닐라푸딩",
+                "value_no": null
+              }
+            }
+          ],
+          "market_discount_amount": "0.00",
+          "labels": null,
+          "order_status_before_cs": null,
+          "supply_price": "29900.00",
+          "multi_invoice": null,
+          "shipping_expected_date": null
+        }
+      ],
+      "shipping_fee_detail": [
+        {
+          "shipping_group_code": 5720,
+          "supplier_code": "S0000000",
+          "shipping_fee": "0.00",
+          "cancel_shipping_fee": "0.00",
+          "additional_shipping_fee": "0.00",
+          "refunded_shipping_fee": "0.00",
+          "return_shipping_fee": "0.00",
+          "items": [
+            "20260921-0000061-01"
+          ]
+        }
+      ],
+      "regional_surcharge_detail": [],
+      "multiple_addresses": "F",
+      "exchange_rate": "1.0000",
+      "first_payment_methods": [
+        "icash"
+      ],
+      "naverpay_payment_information": null,
       "include_tax": "T",
       "tax_detail": null,
       "service_type": null,
@@ -503461,11 +503807,11 @@
     },
     "2026-09-21": {
       "date": "2026-09-21",
-      "order_count": 5,
-      "sales_amount": 77800.0
+      "order_count": 6,
+      "sales_amount": 118700.0
     }
   },
-  "last_synced_at": "2026-09-21T13:45:30.257765Z",
+  "last_synced_at": "2026-09-21T19:08:48.166040Z",
   "channel_breakdown": {
     "네이버 페이": {
       "channel": "네이버 페이",
@@ -503474,8 +503820,8 @@
     },
     "모바일웹": {
       "channel": "모바일웹",
-      "order_count": 314,
-      "sales_amount": 8021700.0
+      "order_count": 315,
+      "sales_amount": 8062600.0
     },
     "톡체크아웃": {
       "channel": "톡체크아웃",
@@ -503492,9 +503838,9 @@
     "2026-09": {
       "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러": {
         "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
-        "quantity": 174,
-        "sales_amount": 3749600.0,
-        "order_count": 174
+        "quantity": 175,
+        "sales_amount": 3774500.0,
+        "order_count": 175
       },
       "프라데라 700ml 손잡이형 Carry 텀블러 부속품": {
         "product_name": "프라데라 700ml 손잡이형 Carry 텀블러 부속품",
@@ -504409,12 +504755,12 @@
       },
       "2026-09-21": {
         "date": "2026-09-21",
-        "order_count": 5,
+        "order_count": 6,
         "canceled_count": 0
       }
     },
-    "total_orders": 1733,
+    "total_orders": 1734,
     "total_canceled": 128,
-    "cancel_rate": 0.0738603577611079
+    "cancel_rate": 0.07381776239907728
   }
 }
