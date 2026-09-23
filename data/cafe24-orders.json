@@ -501894,7 +501894,7 @@
       "eu_customs_fee": "0.00",
       "shipping_type": "A",
       "shipping_type_text": "국내배송",
-      "shipping_status": "M",
+      "shipping_status": "T",
       "wished_delivery_date": "0000-00-00",
       "wished_delivery_time": null,
       "wished_carrier_id": 0,
@@ -501956,12 +501956,12 @@
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N30",
+          "order_status": "N40",
           "request_undone": null,
           "order_status_additional_info": "",
           "claim_quantity": 0,
           "status_code": "N1",
-          "status_text": "배송중",
+          "status_text": "배송완료",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "4",
@@ -501985,7 +501985,7 @@
           "store_pickup": "F",
           "ordered_date": "2026-09-21T08:21:41+09:00",
           "shipped_date": "2026-09-21T10:05:59+09:00",
-          "delivered_date": null,
+          "delivered_date": "2026-09-23T23:40:30+09:00",
           "purchaseconfirmation_date": null,
           "cancel_date": null,
           "return_confirmed_date": null,
@@ -507822,7 +507822,7 @@
       "sales_amount": 121600.0
     }
   },
-  "last_synced_at": "2026-09-23T13:28:01.027640Z",
+  "last_synced_at": "2026-09-23T17:56:24.640906Z",
   "channel_breakdown": {
     "네이버 페이": {
       "channel": "네이버 페이",
