@@ -510827,7 +510827,7 @@
       "use_escrow": "F",
       "group_no_when_ordering": "",
       "initial_order_amount": {
-        "order_price_amount": "24900.00",
+        "order_price_amount": "0.00",
         "shipping_fee": "3000.00",
         "points_spent_amount": "0.00",
         "credits_spent_amount": "0.00",
@@ -510844,7 +510844,7 @@
         "tax": null
       },
       "actual_order_amount": {
-        "order_price_amount": "24900.00",
+        "order_price_amount": "0.00",
         "shipping_fee": "3000.00",
         "points_spent_amount": "0.00",
         "credits_spent_amount": "0.00",
@@ -510883,7 +510883,7 @@
       "wished_carrier_id": 0,
       "wished_carrier_name": null,
       "return_confirmed_date": null,
-      "total_supply_price": "29900",
+      "total_supply_price": "0",
       "naver_point": "0.00",
       "additional_order_info_list": [],
       "store_pickup": "F",
@@ -510934,17 +510934,17 @@
           "shipping_code": "D-20260925-0000074-00",
           "claim_code": null,
           "claim_reason_type": null,
-          "claim_reason": null,
+          "claim_reason": "다시주문 (구매자 주문취소 : 다른 상품 잘못 주문)",
           "refund_bank_name": "",
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N20",
+          "order_status": "C00",
           "request_undone": null,
           "order_status_additional_info": null,
-          "claim_quantity": 0,
-          "status_code": "N1",
-          "status_text": "배송준비중",
+          "claim_quantity": null,
+          "status_code": "C2",
+          "status_text": "취소신청",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "0",
@@ -510958,7 +510958,7 @@
           "was_product_bundle": null,
           "original_bundle_item_no": null,
           "naver_pay_order_id": "2026092558167400",
-          "naver_pay_claim_status": null,
+          "naver_pay_claim_status": "CANCEL_REQUEST",
           "individual_shipping_fee": "0.00",
           "shipping_fee_type": "M",
           "shipping_fee_type_text": "조건(금액)",
@@ -510974,7 +510974,7 @@
           "return_confirmed_date": null,
           "return_request_date": null,
           "return_collected_date": null,
-          "cancel_request_date": null,
+          "cancel_request_date": "2026-09-26T07:18:13+09:00",
           "refund_date": null,
           "exchange_request_date": null,
           "exchange_date": null,
@@ -511025,7 +511025,7 @@
           ],
           "market_discount_amount": "0.00",
           "labels": null,
-          "order_status_before_cs": null,
+          "order_status_before_cs": "N20",
           "supply_price": "29900.00",
           "multi_invoice": null,
           "shipping_expected_date": null
@@ -511706,15 +511706,15 @@
     "2026-09-25": {
       "date": "2026-09-25",
       "order_count": 7,
-      "sales_amount": 214900.0
+      "sales_amount": 190000.0
     }
   },
-  "last_synced_at": "2026-09-25T20:19:36.709327Z",
+  "last_synced_at": "2026-09-25T23:26:13.453145Z",
   "channel_breakdown": {
     "네이버 페이": {
       "channel": "네이버 페이",
       "order_count": 1169,
-      "sales_amount": 31152100.0
+      "sales_amount": 31127200.0
     },
     "모바일웹": {
       "channel": "모바일웹",
