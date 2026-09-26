@@ -493110,19 +493110,17 @@
       "bank_code": "bank_04",
       "bank_code_name": "국민은행",
       "payment_method": [
-        "cash",
-        "coupon"
+        "cash"
       ],
       "payment_method_name": [
-        "무통장입금",
-        "쿠폰"
+        "무통장입금"
       ],
       "payment_gateway_names": null,
       "sub_payment_method_name": null,
       "sub_payment_method_code": null,
       "transaction_ids": null,
       "paid": "F",
-      "canceled": "F",
+      "canceled": "T",
       "order_date": "2026-09-19T12:43:15+09:00",
       "first_order": "F",
       "payment_date": null,
@@ -493147,18 +493145,18 @@
         "tax": null
       },
       "actual_order_amount": {
-        "order_price_amount": "24900.00",
+        "order_price_amount": "0.00",
         "shipping_fee": "0.00",
         "points_spent_amount": "0.00",
         "credits_spent_amount": "0.00",
-        "coupon_discount_price": "3000.00",
+        "coupon_discount_price": "0.00",
         "coupon_shipping_fee_amount": "0.00",
         "membership_discount_amount": "0.00",
         "shipping_fee_discount_amount": "0.00",
         "set_product_discount_amount": "0.00",
         "app_discount_amount": "0.00",
         "point_incentive_amount": "0.00",
-        "total_amount_due": "21900.00",
+        "total_amount_due": "0.00",
         "payment_amount": "0.00",
         "market_other_discount_amount": "0.00",
         "tax": null
@@ -493167,7 +493165,7 @@
       "bank_account_owner_name": "(주)코린트",
       "market_seller_id": null,
       "payment_amount": "0.00",
-      "cancel_date": null,
+      "cancel_date": "2026-09-27T05:18:41+09:00",
       "order_place_name": "모바일웹",
       "order_place_id": "self",
       "payment_confirmation": null,
@@ -493185,8 +493183,8 @@
       "wished_delivery_time": null,
       "wished_carrier_id": null,
       "wished_carrier_name": null,
-      "return_confirmed_date": null,
-      "total_supply_price": "29900",
+      "return_confirmed_date": "2026-09-27T05:18:41+09:00",
+      "total_supply_price": "0",
       "naver_point": null,
       "additional_order_info_list": [],
       "store_pickup": "F",
@@ -493225,7 +493223,7 @@
           "additional_discount_price": "0.00",
           "coupon_discount_price": "3000.00",
           "app_item_discount_amount": null,
-          "payment_amount": "21900.00",
+          "payment_amount": "0.00",
           "quantity": 1,
           "product_tax_type": "A",
           "tax_rate": 10,
@@ -493235,19 +493233,19 @@
           "supplier_name": "자체공급",
           "tracking_no": null,
           "shipping_code": "D-20260919-0000113-00",
-          "claim_code": null,
+          "claim_code": "C20260927-0000220",
           "claim_reason_type": null,
           "claim_reason": null,
           "refund_bank_name": "",
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N00",
+          "order_status": "C48",
           "request_undone": null,
-          "order_status_additional_info": "",
+          "order_status_additional_info": "시스템",
           "claim_quantity": 0,
-          "status_code": "N1",
-          "status_text": "입금전",
+          "status_code": "C1",
+          "status_text": "입금전취소",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "0",
@@ -493267,14 +493265,16 @@
           "shipping_fee_type_text": "무료",
           "shipping_payment_option": "F",
           "payment_info_id": "0",
-          "original_item_no": [],
+          "original_item_no": [
+            1975
+          ],
           "store_pickup": "F",
           "ordered_date": null,
           "shipped_date": null,
           "delivered_date": null,
           "purchaseconfirmation_date": null,
-          "cancel_date": null,
-          "return_confirmed_date": null,
+          "cancel_date": "2026-09-27T05:18:41+09:00",
+          "return_confirmed_date": "2026-09-27T05:18:41+09:00",
           "return_request_date": null,
           "return_collected_date": null,
           "cancel_request_date": null,
@@ -493328,7 +493328,7 @@
           ],
           "market_discount_amount": "0.00",
           "labels": null,
-          "order_status_before_cs": null,
+          "order_status_before_cs": "N00",
           "supply_price": "29900.00",
           "multi_invoice": null,
           "shipping_expected_date": null
@@ -493343,9 +493343,7 @@
           "additional_shipping_fee": "0.00",
           "refunded_shipping_fee": "0.00",
           "return_shipping_fee": "0.00",
-          "items": [
-            "20260919-0000113-01"
-          ]
+          "items": null
         }
       ],
       "regional_surcharge_detail": [],
@@ -493386,7 +493384,7 @@
       "sub_payment_method_code": null,
       "transaction_ids": null,
       "paid": "F",
-      "canceled": "F",
+      "canceled": "T",
       "order_date": "2026-09-19T12:40:58+09:00",
       "first_order": "T",
       "payment_date": null,
@@ -493411,7 +493409,7 @@
         "tax": null
       },
       "actual_order_amount": {
-        "order_price_amount": "24900.00",
+        "order_price_amount": "0.00",
         "shipping_fee": "0.00",
         "points_spent_amount": "0.00",
         "credits_spent_amount": "0.00",
@@ -493422,7 +493420,7 @@
         "set_product_discount_amount": "0.00",
         "app_discount_amount": "0.00",
         "point_incentive_amount": "0.00",
-        "total_amount_due": "24900.00",
+        "total_amount_due": "0.00",
         "payment_amount": "0.00",
         "market_other_discount_amount": "0.00",
         "tax": null
@@ -493431,7 +493429,7 @@
       "bank_account_owner_name": "(주)코린트",
       "market_seller_id": null,
       "payment_amount": "0.00",
-      "cancel_date": null,
+      "cancel_date": "2026-09-27T05:18:41+09:00",
       "order_place_name": "모바일웹",
       "order_place_id": "self",
       "payment_confirmation": null,
@@ -493449,8 +493447,8 @@
       "wished_delivery_time": null,
       "wished_carrier_id": null,
       "wished_carrier_name": null,
-      "return_confirmed_date": null,
-      "total_supply_price": "29900",
+      "return_confirmed_date": "2026-09-27T05:18:41+09:00",
+      "total_supply_price": "0",
       "naver_point": null,
       "additional_order_info_list": [],
       "store_pickup": "F",
@@ -493489,7 +493487,7 @@
           "additional_discount_price": "0.00",
           "coupon_discount_price": "0.00",
           "app_item_discount_amount": null,
-          "payment_amount": "24900.00",
+          "payment_amount": "0.00",
           "quantity": 1,
           "product_tax_type": "A",
           "tax_rate": 10,
@@ -493499,19 +493497,19 @@
           "supplier_name": "자체공급",
           "tracking_no": null,
           "shipping_code": "D-20260919-0000107-00",
-          "claim_code": null,
+          "claim_code": "C20260927-0000221",
           "claim_reason_type": null,
           "claim_reason": null,
           "refund_bank_name": "",
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N00",
+          "order_status": "C48",
           "request_undone": null,
-          "order_status_additional_info": "",
+          "order_status_additional_info": "시스템",
           "claim_quantity": 0,
-          "status_code": "N1",
-          "status_text": "입금전",
+          "status_code": "C1",
+          "status_text": "입금전취소",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "0",
@@ -493531,14 +493529,16 @@
           "shipping_fee_type_text": "무료",
           "shipping_payment_option": "F",
           "payment_info_id": "0",
-          "original_item_no": [],
+          "original_item_no": [
+            1974
+          ],
           "store_pickup": "F",
           "ordered_date": null,
           "shipped_date": null,
           "delivered_date": null,
           "purchaseconfirmation_date": null,
-          "cancel_date": null,
-          "return_confirmed_date": null,
+          "cancel_date": "2026-09-27T05:18:41+09:00",
+          "return_confirmed_date": "2026-09-27T05:18:41+09:00",
           "return_request_date": null,
           "return_collected_date": null,
           "cancel_request_date": null,
@@ -493592,7 +493592,7 @@
           ],
           "market_discount_amount": "0.00",
           "labels": null,
-          "order_status_before_cs": null,
+          "order_status_before_cs": "N00",
           "supply_price": "29900.00",
           "multi_invoice": null,
           "shipping_expected_date": null
@@ -493607,9 +493607,7 @@
           "additional_shipping_fee": "0.00",
           "refunded_shipping_fee": "0.00",
           "return_shipping_fee": "0.00",
-          "items": [
-            "20260919-0000107-01"
-          ]
+          "items": null
         }
       ],
       "regional_surcharge_detail": [],
@@ -513337,8 +513335,8 @@
     },
     "2026-09-19": {
       "date": "2026-09-19",
-      "order_count": 12,
-      "sales_amount": 338900.0
+      "order_count": 10,
+      "sales_amount": 289100.0
     },
     "2026-09-20": {
       "date": "2026-09-20",
@@ -513376,7 +513374,7 @@
       "sales_amount": 197400.0
     }
   },
-  "last_synced_at": "2026-09-26T19:36:29.854603Z",
+  "last_synced_at": "2026-09-26T22:31:34.478435Z",
   "channel_breakdown": {
     "네이버 페이": {
       "channel": "네이버 페이",
@@ -513385,8 +513383,8 @@
     },
     "모바일웹": {
       "channel": "모바일웹",
-      "order_count": 327,
-      "sales_amount": 8438500.0
+      "order_count": 325,
+      "sales_amount": 8388700.0
     },
     "톡체크아웃": {
       "channel": "톡체크아웃",
@@ -513403,9 +513401,9 @@
     "2026-09": {
       "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러": {
         "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
-        "quantity": 203,
-        "sales_amount": 4471700.0,
-        "order_count": 203
+        "quantity": 201,
+        "sales_amount": 4421900.0,
+        "order_count": 201
       },
       "프라데라 700ml 손잡이형 Carry 텀블러 부속품": {
         "product_name": "프라데라 700ml 손잡이형 Carry 텀블러 부속품",
@@ -514311,7 +514309,7 @@
       "2026-09-19": {
         "date": "2026-09-19",
         "order_count": 17,
-        "canceled_count": 5
+        "canceled_count": 7
       },
       "2026-09-20": {
         "date": "2026-09-20",
@@ -514350,7 +514348,7 @@
       }
     },
     "total_orders": 1768,
-    "total_canceled": 128,
-    "cancel_rate": 0.07239819004524888
+    "total_canceled": 130,
+    "cancel_rate": 0.07352941176470588
   }
 }
