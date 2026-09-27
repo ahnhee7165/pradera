@@ -513020,6 +513020,286 @@
       "show_shipping_address": "T",
       "social_member_code": null,
       "social_name": null
+    },
+    "20260927-0000027": {
+      "shop_no": 1,
+      "currency": "KRW",
+      "order_id": "20260927-0000027",
+      "market_id": "KAKAOPAY",
+      "market_order_no": "2026092716566743",
+      "member_id": "",
+      "member_email": null,
+      "member_authentication": null,
+      "billing_name": "이미자",
+      "bank_code": null,
+      "bank_code_name": null,
+      "payment_method": [
+        "prepaid"
+      ],
+      "payment_method_name": [
+        "선불금"
+      ],
+      "payment_gateway_names": null,
+      "sub_payment_method_name": null,
+      "sub_payment_method_code": null,
+      "transaction_ids": null,
+      "paid": "T",
+      "canceled": "F",
+      "order_date": "2026-09-27T22:20:15+09:00",
+      "first_order": null,
+      "payment_date": "2026-09-27T22:19:46+09:00",
+      "order_from_mobile": "F",
+      "use_escrow": "F",
+      "group_no_when_ordering": "",
+      "initial_order_amount": {
+        "order_price_amount": "40900.00",
+        "shipping_fee": "0.00",
+        "points_spent_amount": "0.00",
+        "credits_spent_amount": "0.00",
+        "coupon_discount_price": "0.00",
+        "coupon_shipping_fee_amount": "0.00",
+        "membership_discount_amount": "0.00",
+        "shipping_fee_discount_amount": "0.00",
+        "set_product_discount_amount": "0.00",
+        "app_discount_amount": "0.00",
+        "point_incentive_amount": "0.00",
+        "total_amount_due": "0.00",
+        "payment_amount": "40702.00",
+        "market_other_discount_amount": "0.00",
+        "tax": null
+      },
+      "actual_order_amount": {
+        "order_price_amount": "40900.00",
+        "shipping_fee": "0.00",
+        "points_spent_amount": "0.00",
+        "credits_spent_amount": "0.00",
+        "coupon_discount_price": "0.00",
+        "coupon_shipping_fee_amount": "0.00",
+        "membership_discount_amount": "0.00",
+        "shipping_fee_discount_amount": "0.00",
+        "set_product_discount_amount": "0.00",
+        "app_discount_amount": "0.00",
+        "point_incentive_amount": "0.00",
+        "total_amount_due": "0.00",
+        "payment_amount": "40702.00",
+        "market_other_discount_amount": "0.00",
+        "tax": null
+      },
+      "bank_account_no": null,
+      "bank_account_owner_name": null,
+      "market_seller_id": null,
+      "payment_amount": "40702.00",
+      "cancel_date": null,
+      "order_place_name": "톡체크아웃",
+      "order_place_id": "KAKAOPAY",
+      "payment_confirmation": null,
+      "commission": null,
+      "postpay": "F",
+      "admin_additional_amount": null,
+      "additional_shipping_fee": "0.00",
+      "international_shipping_insurance": "0.00",
+      "additional_handling_fee": "0.00",
+      "eu_customs_fee": "0.00",
+      "shipping_type": "A",
+      "shipping_type_text": "국내배송",
+      "shipping_status": "F",
+      "wished_delivery_date": "0000-00-00",
+      "wished_delivery_time": null,
+      "wished_carrier_id": 0,
+      "wished_carrier_name": null,
+      "return_confirmed_date": null,
+      "total_supply_price": "29900",
+      "naver_point": null,
+      "additional_order_info_list": [],
+      "store_pickup": "F",
+      "easypay_name": "",
+      "loan_status": null,
+      "subscription": "F",
+      "subscription_id": null,
+      "items": [
+        {
+          "shop_no": 1,
+          "item_no": 2046,
+          "order_item_code": "20260927-0000027-01",
+          "variant_code": "P00000BP00BL",
+          "product_no": 41,
+          "product_code": "P00000BP",
+          "internal_product_name": "",
+          "custom_product_code": "",
+          "custom_variant_code": null,
+          "eng_product_name": "",
+          "option_id": "00BL",
+          "option_value": "색상1=민초포도, 색상2=핑크펀치",
+          "option_value_default": "색상1=민초포도, 색상2=핑크펀치",
+          "additional_option_value": "",
+          "additional_option_values": [
+            {
+              "key": null,
+              "type": null,
+              "name": null,
+              "value": null
+            }
+          ],
+          "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
+          "product_name_default": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
+          "product_price": "40900.00",
+          "option_price": "0.00",
+          "additional_discount_price": "0.00",
+          "coupon_discount_price": "0.00",
+          "app_item_discount_amount": null,
+          "payment_amount": "40702.00",
+          "quantity": 1,
+          "product_tax_type": "A",
+          "tax_rate": 0,
+          "supplier_product_name": "",
+          "supplier_transaction_type": "D",
+          "supplier_id": "S0000000",
+          "supplier_name": "자체공급",
+          "tracking_no": null,
+          "shipping_code": "D-20260927-0000027-00",
+          "claim_code": null,
+          "claim_reason_type": null,
+          "claim_reason": null,
+          "refund_bank_name": "",
+          "refund_bank_account_no": "",
+          "refund_bank_account_holder": "",
+          "post_express_flag": null,
+          "order_status": "N20",
+          "request_undone": null,
+          "order_status_additional_info": null,
+          "claim_quantity": 0,
+          "status_code": "N1",
+          "status_text": "배송준비중",
+          "open_market_status": "",
+          "bundled_shipping_type": "N",
+          "shipping_company_id": "0",
+          "shipping_company_name": null,
+          "shipping_company_code": null,
+          "product_bundle": "F",
+          "product_bundle_no": "",
+          "product_bundle_name": null,
+          "product_bundle_name_default": null,
+          "product_bundle_type": null,
+          "was_product_bundle": null,
+          "original_bundle_item_no": null,
+          "naver_pay_order_id": "2026092719830377",
+          "naver_pay_claim_status": null,
+          "individual_shipping_fee": "0.00",
+          "shipping_fee_type": "X",
+          "shipping_fee_type_text": "기본배송",
+          "shipping_payment_option": "F",
+          "payment_info_id": "0",
+          "original_item_no": [],
+          "store_pickup": "F",
+          "ordered_date": "2026-09-27T22:20:15+09:00",
+          "shipped_date": null,
+          "delivered_date": null,
+          "purchaseconfirmation_date": null,
+          "cancel_date": null,
+          "return_confirmed_date": null,
+          "return_request_date": null,
+          "return_collected_date": null,
+          "cancel_request_date": null,
+          "refund_date": null,
+          "exchange_request_date": null,
+          "exchange_date": null,
+          "product_material": "",
+          "product_material_eng": null,
+          "cloth_fabric": null,
+          "product_weight": null,
+          "volume_size": null,
+          "volume_size_weight": null,
+          "clearance_category": null,
+          "clearance_category_info": null,
+          "clearance_category_code": null,
+          "hs_code": null,
+          "one_plus_n_event": null,
+          "origin_place": "국내 ",
+          "origin_place_no": 1798,
+          "made_in_code": "KR",
+          "origin_place_value": "",
+          "gift": "F",
+          "item_granting_gift": null,
+          "subscription": "F",
+          "product_bundle_list": null,
+          "market_cancel_request": null,
+          "market_cancel_request_quantity": null,
+          "market_fail_reason": null,
+          "market_fail_reason_guide": null,
+          "market_fail_reason_type": null,
+          "market_item_no": null,
+          "market_custom_variant_code": null,
+          "option_type": " ",
+          "options": [
+            {
+              "option_code": null,
+              "option_name": "색상1",
+              "option_value": {
+                "option_text": "민초포도",
+                "value_no": null
+              }
+            },
+            {
+              "option_code": null,
+              "option_name": "색상2",
+              "option_value": {
+                "option_text": "핑크펀치",
+                "value_no": null
+              }
+            }
+          ],
+          "market_discount_amount": "0.00",
+          "labels": null,
+          "order_status_before_cs": null,
+          "supply_price": "29900.00",
+          "multi_invoice": null,
+          "shipping_expected_date": null
+        }
+      ],
+      "shipping_fee_detail": [
+        {
+          "shipping_group_code": 5856,
+          "supplier_code": "S0000000",
+          "shipping_fee": "0.00",
+          "cancel_shipping_fee": "0.00",
+          "additional_shipping_fee": "0.00",
+          "refunded_shipping_fee": "0.00",
+          "return_shipping_fee": "0.00",
+          "items": [
+            "20260927-0000027-01"
+          ]
+        }
+      ],
+      "regional_surcharge_detail": [
+        {
+          "shipping_group_code": 5857,
+          "supplier_code": "S0000000",
+          "regional_surcharge_amount": "0.00",
+          "regional_surcharge_calculation_type": null,
+          "template_code": null,
+          "template_name": null,
+          "cancel_shipping_fee": "0.00",
+          "additional_shipping_fee": "0.00",
+          "refunded_shipping_fee": "0.00",
+          "return_shipping_fee": "0.00",
+          "items": [
+            "20260927-0000027-01"
+          ]
+        }
+      ],
+      "multiple_addresses": "F",
+      "exchange_rate": "1.0000",
+      "first_payment_methods": [
+        "prepaid"
+      ],
+      "naverpay_payment_information": null,
+      "include_tax": "T",
+      "tax_detail": null,
+      "service_type": null,
+      "service_data": null,
+      "show_shipping_address": "T",
+      "social_member_code": null,
+      "social_name": null
     }
   },
   "salesreport": {
@@ -513660,11 +513940,11 @@
     },
     "2026-09-27": {
       "date": "2026-09-27",
-      "order_count": 1,
-      "sales_amount": 24900.0
+      "order_count": 2,
+      "sales_amount": 65800.0
     }
   },
-  "last_synced_at": "2026-09-27T12:55:27.989676Z",
+  "last_synced_at": "2026-09-27T17:36:42.927844Z",
   "channel_breakdown": {
     "네이버 페이": {
       "channel": "네이버 페이",
@@ -513678,8 +513958,8 @@
     },
     "톡체크아웃": {
       "channel": "톡체크아웃",
-      "order_count": 137,
-      "sales_amount": 3726600.0
+      "order_count": 138,
+      "sales_amount": 3767500.0
     },
     "PC쇼핑몰": {
       "channel": "PC쇼핑몰",
@@ -513691,9 +513971,9 @@
     "2026-09": {
       "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러": {
         "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
-        "quantity": 202,
-        "sales_amount": 4446800.0,
-        "order_count": 202
+        "quantity": 203,
+        "sales_amount": 4487700.0,
+        "order_count": 203
       },
       "프라데라 700ml 손잡이형 Carry 텀블러 부속품": {
         "product_name": "프라데라 700ml 손잡이형 Carry 텀블러 부속품",
@@ -514638,12 +514918,12 @@
       },
       "2026-09-27": {
         "date": "2026-09-27",
-        "order_count": 1,
+        "order_count": 2,
         "canceled_count": 0
       }
     },
-    "total_orders": 1769,
+    "total_orders": 1770,
     "total_canceled": 130,
-    "cancel_rate": 0.07348784624081402
+    "cancel_rate": 0.07344632768361582
   }
 }
