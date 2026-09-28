@@ -502955,7 +502955,7 @@
         }
       ],
       "paid": "F",
-      "canceled": "F",
+      "canceled": "T",
       "order_date": "2026-09-21T23:05:53+09:00",
       "first_order": "F",
       "payment_date": null,
@@ -502980,7 +502980,7 @@
         "tax": null
       },
       "actual_order_amount": {
-        "order_price_amount": "40900.00",
+        "order_price_amount": "0.00",
         "shipping_fee": "0.00",
         "points_spent_amount": "0.00",
         "credits_spent_amount": "0.00",
@@ -502991,7 +502991,7 @@
         "set_product_discount_amount": "0.00",
         "app_discount_amount": "0.00",
         "point_incentive_amount": "0.00",
-        "total_amount_due": "40900.00",
+        "total_amount_due": "0.00",
         "payment_amount": "0.00",
         "market_other_discount_amount": "0.00",
         "tax": null
@@ -503000,7 +503000,7 @@
       "bank_account_owner_name": null,
       "market_seller_id": null,
       "payment_amount": "0.00",
-      "cancel_date": null,
+      "cancel_date": "2026-09-29T05:18:27+09:00",
       "order_place_name": "모바일웹",
       "order_place_id": "mobile",
       "payment_confirmation": null,
@@ -503018,8 +503018,8 @@
       "wished_delivery_time": null,
       "wished_carrier_id": null,
       "wished_carrier_name": null,
-      "return_confirmed_date": null,
-      "total_supply_price": "29900",
+      "return_confirmed_date": "2026-09-29T05:18:27+09:00",
+      "total_supply_price": "0",
       "naver_point": null,
       "additional_order_info_list": [],
       "store_pickup": "F",
@@ -503058,7 +503058,7 @@
           "additional_discount_price": "0.00",
           "coupon_discount_price": "0.00",
           "app_item_discount_amount": null,
-          "payment_amount": "40900.00",
+          "payment_amount": "0.00",
           "quantity": 1,
           "product_tax_type": "A",
           "tax_rate": 10,
@@ -503068,19 +503068,19 @@
           "supplier_name": "자체공급",
           "tracking_no": null,
           "shipping_code": "D-20260921-0000061-00",
-          "claim_code": null,
+          "claim_code": "C20260929-0000224",
           "claim_reason_type": null,
           "claim_reason": null,
           "refund_bank_name": "",
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N00",
+          "order_status": "C48",
           "request_undone": null,
-          "order_status_additional_info": "",
+          "order_status_additional_info": "시스템",
           "claim_quantity": 0,
-          "status_code": "N1",
-          "status_text": "입금전",
+          "status_code": "C1",
+          "status_text": "입금전취소",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "0",
@@ -503100,14 +503100,16 @@
           "shipping_fee_type_text": "무료",
           "shipping_payment_option": "F",
           "payment_info_id": "0",
-          "original_item_no": [],
+          "original_item_no": [
+            2007
+          ],
           "store_pickup": "F",
           "ordered_date": null,
           "shipped_date": null,
           "delivered_date": null,
           "purchaseconfirmation_date": null,
-          "cancel_date": null,
-          "return_confirmed_date": null,
+          "cancel_date": "2026-09-29T05:18:27+09:00",
+          "return_confirmed_date": "2026-09-29T05:18:27+09:00",
           "return_request_date": null,
           "return_collected_date": null,
           "cancel_request_date": null,
@@ -503161,7 +503163,7 @@
           ],
           "market_discount_amount": "0.00",
           "labels": null,
-          "order_status_before_cs": null,
+          "order_status_before_cs": "N00",
           "supply_price": "29900.00",
           "multi_invoice": null,
           "shipping_expected_date": null
@@ -503176,9 +503178,7 @@
           "additional_shipping_fee": "0.00",
           "refunded_shipping_fee": "0.00",
           "return_shipping_fee": "0.00",
-          "items": [
-            "20260921-0000061-01"
-          ]
+          "items": null
         }
       ],
       "regional_surcharge_detail": [],
@@ -504394,7 +504394,7 @@
       "eu_customs_fee": "0.00",
       "shipping_type": "A",
       "shipping_type_text": "국내배송",
-      "shipping_status": "M",
+      "shipping_status": "T",
       "wished_delivery_date": "",
       "wished_delivery_time": null,
       "wished_carrier_id": null,
@@ -504456,12 +504456,12 @@
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N30",
+          "order_status": "N40",
           "request_undone": null,
           "order_status_additional_info": "",
           "claim_quantity": 0,
           "status_code": "N1",
-          "status_text": "배송중",
+          "status_text": "배송완료",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "4",
@@ -504485,7 +504485,7 @@
           "store_pickup": "F",
           "ordered_date": "2026-09-22T13:55:13+09:00",
           "shipped_date": "2026-09-22T14:10:13+09:00",
-          "delivered_date": null,
+          "delivered_date": "2026-09-29T05:32:20+09:00",
           "purchaseconfirmation_date": null,
           "cancel_date": null,
           "return_confirmed_date": null,
@@ -514320,8 +514320,8 @@
     },
     "2026-09-21": {
       "date": "2026-09-21",
-      "order_count": 6,
-      "sales_amount": 118700.0
+      "order_count": 5,
+      "sales_amount": 77800.0
     },
     "2026-09-22": {
       "date": "2026-09-22",
@@ -514359,7 +514359,7 @@
       "sales_amount": 81800.0
     }
   },
-  "last_synced_at": "2026-09-28T18:41:22.122421Z",
+  "last_synced_at": "2026-09-28T23:46:14.598425Z",
   "channel_breakdown": {
     "네이버 페이": {
       "channel": "네이버 페이",
@@ -514368,8 +514368,8 @@
     },
     "모바일웹": {
       "channel": "모바일웹",
-      "order_count": 326,
-      "sales_amount": 8470500.0
+      "order_count": 325,
+      "sales_amount": 8429600.0
     },
     "톡체크아웃": {
       "channel": "톡체크아웃",
@@ -514386,9 +514386,9 @@
     "2026-09": {
       "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러": {
         "product_name": "프라데라 대용량 40온즈 손잡이 스트로우 스텐304 보온 보냉 텀블러",
-        "quantity": 204,
-        "sales_amount": 4512600.0,
-        "order_count": 204
+        "quantity": 203,
+        "sales_amount": 4487700.0,
+        "order_count": 203
       },
       "프라데라 700ml 손잡이형 Carry 텀블러 부속품": {
         "product_name": "프라데라 700ml 손잡이형 Carry 텀블러 부속품",
@@ -515304,7 +515304,7 @@
       "2026-09-21": {
         "date": "2026-09-21",
         "order_count": 6,
-        "canceled_count": 0
+        "canceled_count": 1
       },
       "2026-09-22": {
         "date": "2026-09-22",
@@ -515343,7 +515343,7 @@
       }
     },
     "total_orders": 1771,
-    "total_canceled": 131,
-    "cancel_rate": 0.07396950875211744
+    "total_canceled": 132,
+    "cancel_rate": 0.07453416149068323
   }
 }
