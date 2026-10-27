@@ -524407,7 +524407,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": null,
-      "social_name": null
+      "social_name": null,
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261022-0000016": {
       "shop_no": 1,
@@ -524789,7 +524792,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": "klRbXpy_8cnPZutWT6zyxD4jRQ3U0Jc3yvX7LT8zAGw",
-      "social_name": "naver"
+      "social_name": "naver",
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261023-0000017": {
       "shop_no": 1,
@@ -525066,7 +525072,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": null,
-      "social_name": null
+      "social_name": null,
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261024-0000010": {
       "shop_no": 1,
@@ -525322,7 +525331,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": "Li_OIRnLjzb1nH_MPkX8dfKG3ZGPcMgKGbImu2t8Nkg",
-      "social_name": "naver"
+      "social_name": "naver",
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261025-0000019": {
       "shop_no": 1,
@@ -525858,7 +525870,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": null,
-      "social_name": null
+      "social_name": null,
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261026-0000017": {
       "shop_no": 1,
@@ -525941,7 +525956,7 @@
       "eu_customs_fee": "0.00",
       "shipping_type": "A",
       "shipping_type_text": "국내배송",
-      "shipping_status": "M",
+      "shipping_status": "T",
       "wished_delivery_date": "0000-00-00",
       "wished_delivery_time": null,
       "wished_carrier_id": 0,
@@ -526003,12 +526018,12 @@
           "refund_bank_account_no": "",
           "refund_bank_account_holder": "",
           "post_express_flag": null,
-          "order_status": "N30",
+          "order_status": "N40",
           "request_undone": null,
           "order_status_additional_info": "",
           "claim_quantity": 0,
           "status_code": "N1",
-          "status_text": "배송중",
+          "status_text": "배송완료",
           "open_market_status": "",
           "bundled_shipping_type": "N",
           "shipping_company_id": "4",
@@ -526032,7 +526047,7 @@
           "store_pickup": "F",
           "ordered_date": "2026-10-26T08:11:30+09:00",
           "shipped_date": "2026-10-26T09:20:43+09:00",
-          "delivered_date": null,
+          "delivered_date": "2026-10-28T04:09:40+09:00",
           "purchaseconfirmation_date": null,
           "cancel_date": null,
           "return_confirmed_date": null,
@@ -526130,7 +526145,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": null,
-      "social_name": null
+      "social_name": null,
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261026-0000025": {
       "shop_no": 1,
@@ -526534,7 +526552,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": null,
-      "social_name": null
+      "social_name": null,
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261026-0000062": {
       "shop_no": 1,
@@ -526797,7 +526818,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": "f3KQzXkEAhufKxqWS__tC9OBRSTpfQJhuoBjHFYPkYc",
-      "social_name": "naver"
+      "social_name": "naver",
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261026-0000031": {
       "shop_no": 1,
@@ -527074,7 +527098,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": null,
-      "social_name": null
+      "social_name": null,
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     },
     "20261027-0000013": {
       "shop_no": 1,
@@ -527351,7 +527378,10 @@
       "service_data": null,
       "show_shipping_address": "T",
       "social_member_code": null,
-      "social_name": null
+      "social_name": null,
+      "global_aio_order": "F",
+      "global_aio_captured": "F",
+      "global_aio_capture_status": "none"
     }
   },
   "salesreport": {
@@ -528111,7 +528141,7 @@
       "sales_amount": 1500.0
     }
   },
-  "last_synced_at": "2026-10-27T16:16:09.493001Z",
+  "last_synced_at": "2026-10-27T20:51:29.687669Z",
   "channel_breakdown": {
     "네이버 페이": {
       "channel": "네이버 페이",
