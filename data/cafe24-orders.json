@@ -527825,7 +527825,7 @@
           "original_item_no": [],
           "store_pickup": "F",
           "ordered_date": "2026-10-29T11:00:51+09:00",
-          "shipped_date": "2026-10-29T11:39:12+09:00",
+          "shipped_date": "2026-10-29T11:39:13+09:00",
           "delivered_date": null,
           "purchaseconfirmation_date": null,
           "cancel_date": null,
@@ -527955,7 +527955,7 @@
           "original_item_no": [],
           "store_pickup": "F",
           "ordered_date": "2026-10-29T11:00:51+09:00",
-          "shipped_date": "2026-10-29T11:39:11+09:00",
+          "shipped_date": "2026-10-29T11:39:13+09:00",
           "delivered_date": null,
           "purchaseconfirmation_date": null,
           "cancel_date": null,
@@ -528829,7 +528829,7 @@
       "sales_amount": 3000.0
     }
   },
-  "last_synced_at": "2026-10-29T02:42:01.732885Z",
+  "last_synced_at": "2026-10-29T09:37:42.037140Z",
   "channel_breakdown": {
     "네이버 페이": {
       "channel": "네이버 페이",
